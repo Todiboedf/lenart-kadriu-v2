@@ -2,37 +2,43 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import AnimatedSection from "./AnimatedSection";
-import { Trophy, Target, Globe, Award } from "lucide-react";
+import { Trophy, Globe, Users } from "lucide-react";
+import { fadeUp, staggerContainer, viewInProps } from "@/lib/motion";
 
-const results = [
+type Category = {
+  icon: typeof Trophy;
+  label: string;
+  items: string[];
+};
+
+const categories: Category[] = [
   {
-    flag: "🇨🇭",
-    country: "Suisse",
+    icon: Trophy,
+    label: "Suisse",
     items: [
       "4× Champion Vaudois",
-      "Vainqueur TC Gland 2025 (Road to Montreux · MS)",
+      "Vainqueur TC Gland 2025 — Road to Montreux MS",
       "Plusieurs victoires nationales",
     ],
   },
   {
-    flag: "🌍",
-    country: "Europe Simple",
+    icon: Globe,
+    label: "Europe · Simple",
     items: [
-      "Vainqueur Split Croatie",
-      "Finaliste Tirana Albanie",
-      "Finaliste Shkodra Albanie",
-      "Finaliste Poreč Croatie",
-      "3ème Poreč Croatie",
+      "Vainqueur Split, Croatie",
+      "Finaliste Tirana, Albanie",
+      "Finaliste Shkodra, Albanie",
+      "Finaliste Poreč, Croatie",
+      "3e Poreč, Croatie",
       "4 victoires cat.1 Tournoi Europe France",
     ],
   },
   {
-    flag: "🤝",
-    country: "Double",
+    icon: Users,
+    label: "Europe · Double",
     items: [
-      "Finaliste Podgorica Monténégro",
-      "3ème Tirana Albanie",
+      "Finaliste Podgorica, Monténégro",
+      "3e Tirana, Albanie",
       "Plusieurs victoires double Tournoi Europe France",
     ],
   },
@@ -40,131 +46,119 @@ const results = [
 
 const objectives = [
   {
-    icon: <Target className="w-5 h-5" />,
-    emoji: "🎯",
-    title: "Court terme 2025–2026",
-    desc: "Intégrer ITF Junior, renforcer présence tournois européens, développement physique et mental complet",
+    horizon: "2025 – 2026",
+    title: "Court terme",
+    desc: "Intégrer ITF Junior, renforcer la présence sur les tournois européens, développement physique et mental complet.",
   },
   {
-    icon: <Globe className="w-5 h-5" />,
-    emoji: "🌍",
-    title: "Moyen terme 2027–2030",
-    desc: "Leader suisse de sa génération, représenter la Suisse en compétitions internationales majeures",
+    horizon: "2027 – 2030",
+    title: "Moyen terme",
+    desc: "Devenir leader suisse de sa génération, représenter la Suisse dans les compétitions internationales majeures.",
   },
   {
-    icon: <Award className="w-5 h-5" />,
-    emoji: "🏆",
-    title: "Long terme",
-    desc: "Circuit ATP avec encadrement professionnel complet. Faire rayonner la Suisse sur la scène mondiale",
+    horizon: "Long terme",
+    title: "Circuit ATP",
+    desc: "Intégrer le circuit professionnel avec un encadrement complet. Faire rayonner la Suisse sur la scène mondiale.",
   },
 ];
 
 export default function PalmaresSection() {
   return (
-    <section id="palmares" className="relative py-24 sm:py-32">
-      <div className="absolute top-0 left-6 right-6 lg:left-8 lg:right-8 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent" />
-
-      {/* Background glow */}
-      <div className="stadium-light w-[600px] h-[600px] bg-[var(--accent-lime)] top-[20%] left-[-300px]" />
-
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <AnimatedSection>
-          <span className="section-label">Achievements</span>
-          <h2 className="font-[var(--font-heading)] text-4xl sm:text-5xl lg:text-6xl font-800 mt-4 mb-16 tracking-[-0.02em]">
-            Palmarès
+    <section id="palmares" className="relative border-t border-border py-24 sm:py-32">
+      <div className="container-lk">
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="mb-14 flex flex-col gap-4"
+        >
+          <span className="eyebrow">Palmarès</span>
+          <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
+            Les résultats qui tracent la <em className="font-400 text-gold">trajectoire</em>
           </h2>
-        </AnimatedSection>
+        </motion.div>
 
-        {/* Trophy photo */}
-        <AnimatedSection delay={0.1}>
-          <div className="relative aspect-[21/9] rounded-2xl overflow-hidden mb-16 group">
-            <Image
-              src="/assets/photo_trophy.jpg"
-              alt="TC Gland 2025 — Vainqueur"
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050810] via-[#050810]/40 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
-              <div className="flex items-center gap-3 mb-2">
-                <Trophy className="w-5 h-5 text-[var(--accent-lime)]" />
-                <span className="text-xs font-600 tracking-[0.1em] uppercase text-[var(--accent-lime)]">
-                  Victoire
-                </span>
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="relative mb-16 aspect-[21/9] overflow-hidden"
+        >
+          <Image
+            src="/assets/photo_trophy.jpg"
+            alt="TC Gland 2025 — Vainqueur"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+          <figcaption className="absolute bottom-0 left-0 right-0 flex flex-col gap-1 p-6 sm:p-10">
+            <span className="eyebrow">Victoire</span>
+            <p className="font-display text-2xl font-400 text-bone sm:text-3xl">
+              TC Gland 2025 — Vainqueur Road to Montreux
+            </p>
+          </figcaption>
+        </motion.div>
+
+        <motion.div
+          {...viewInProps}
+          variants={staggerContainer}
+          className="grid gap-10 md:grid-cols-3"
+        >
+          {categories.map(({ icon: Icon, label, items }) => (
+            <motion.article
+              key={label}
+              variants={fadeUp}
+              className="flex flex-col gap-5 border-t border-border pt-8"
+            >
+              <div className="flex items-center gap-3">
+                <Icon size={18} strokeWidth={1.3} className="text-gold" />
+                <h3 className="eyebrow">{label}</h3>
               </div>
-              <h3 className="font-[var(--font-heading)] text-2xl sm:text-3xl font-700 text-[var(--text-primary)]">
-                TC Gland 2025
-              </h3>
-              <p className="text-sm sm:text-base text-[var(--text-secondary)] mt-1">
-                Vainqueur — Road to Montreux · MS
-              </p>
-            </div>
-          </div>
-        </AnimatedSection>
-
-        {/* Results by category */}
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
-          {results.map((cat, i) => (
-            <AnimatedSection key={i} delay={0.15 + i * 0.1}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="h-full p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition-colors"
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="text-2xl">{cat.flag}</span>
-                  <h3 className="font-[var(--font-heading)] text-lg font-700 text-[var(--text-primary)]">
-                    {cat.country}
-                  </h3>
-                </div>
-                <ul className="space-y-3">
-                  {cat.items.map((item, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-2.5 text-sm text-[var(--text-secondary)]"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-lime)] mt-1.5 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </AnimatedSection>
+              <ul className="flex flex-col divide-y divide-border">
+                {items.map((item, j) => (
+                  <li
+                    key={j}
+                    className="py-3.5 text-sm leading-relaxed text-bone/90"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Objectives */}
-        <AnimatedSection>
-          <h3 className="font-[var(--font-heading)] text-2xl sm:text-3xl font-700 mb-8">
-            Objectifs
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="mt-24 flex flex-col gap-4"
+        >
+          <span className="eyebrow">Horizon</span>
+          <h3 className="font-display text-3xl font-400 leading-[1.1] tracking-tight text-bone sm:text-4xl">
+            Objectifs à court, moyen et long terme
           </h3>
-        </AnimatedSection>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {objectives.map((obj, i) => (
-            <AnimatedSection key={i} delay={0.1 + i * 0.1}>
-              <motion.div
-                whileHover={{
-                  y: -4,
-                  borderColor: "rgba(200,238,68,0.2)",
-                }}
-                transition={{ duration: 0.3 }}
-                className="h-full p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] transition-all"
-              >
-                <div className="w-10 h-10 rounded-lg bg-[var(--accent-lime)]/10 border border-[var(--accent-lime)]/20 flex items-center justify-center text-[var(--accent-lime)] mb-4">
-                  {obj.icon}
-                </div>
-                <h4 className="font-[var(--font-heading)] text-lg font-700 text-[var(--text-primary)] mb-2">
-                  {obj.emoji} {obj.title}
-                </h4>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {obj.desc}
-                </p>
-              </motion.div>
-            </AnimatedSection>
+        <motion.div
+          {...viewInProps}
+          variants={staggerContainer}
+          className="mt-10 grid gap-10 md:grid-cols-3"
+        >
+          {objectives.map((obj) => (
+            <motion.article
+              key={obj.horizon}
+              variants={fadeUp}
+              className="flex flex-col gap-3 border-t border-border pt-8"
+            >
+              <span className="text-xs tracking-[0.2em] uppercase text-gold">
+                {obj.horizon}
+              </span>
+              <h4 className="font-display text-2xl font-400 text-bone">
+                {obj.title}
+              </h4>
+              <p className="text-sm leading-relaxed text-pearl">{obj.desc}</p>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

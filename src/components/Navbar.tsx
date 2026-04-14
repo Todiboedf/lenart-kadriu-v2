@@ -5,10 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { LKMonogram } from "./ui/LKMonogram";
 
 const navLinks: { label: string; href: string; kind: "hash" | "page" }[] = [
   { label: "Profil", href: "#joueur", kind: "hash" },
-  { label: "Son Jeu", href: "#jeu", kind: "hash" },
+  { label: "Son jeu", href: "#jeu", kind: "hash" },
   { label: "Palmarès", href: "#palmares", kind: "hash" },
   { label: "Galerie", href: "#galerie", kind: "hash" },
   { label: "Sponsoring", href: "/sponsoring", kind: "page" },
@@ -49,7 +50,7 @@ export default function Navbar() {
 
   const handleHashClick = (href: string) => {
     setMobileOpen(false);
-    if (!isHome) return; // let the <Link> do page nav + hash scroll
+    if (!isHome) return;
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -59,21 +60,23 @@ export default function Navbar() {
     return isHome && activeSection === link.href.replace("#", "");
   };
 
+  const linkBase =
+    "relative text-xs tracking-[0.18em] uppercase font-medium transition-colors duration-300 px-3 py-2";
+
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
+        initial={{ y: -60 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || !isHome
-            ? "bg-[#050810]/80 backdrop-blur-xl border-b border-white/[0.04]"
+            ? "bg-black/80 backdrop-blur-xl border-b border-border"
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
-            {/* Logo */}
+        <div className="container-lk">
+          <div className="flex h-[var(--nav-height)] items-center justify-between">
             <Link
               href="/"
               onClick={(e) => {
@@ -82,37 +85,29 @@ export default function Navbar() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="group flex items-center gap-3"
+              className="flex items-center gap-4"
               aria-label="Accueil Lenart Kadriu"
             >
-              <span className="font-[var(--font-heading)] text-2xl font-800 tracking-tight text-[var(--text-primary)]">
-                L
-                <span className="text-[var(--accent-lime)]">K</span>
-              </span>
-              <span className="hidden sm:block text-xs font-500 tracking-[0.15em] uppercase text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
+              <LKMonogram size="md" />
+              <span className="hidden text-xs tracking-[0.2em] uppercase text-pearl sm:block">
                 Lenart Kadriu
               </span>
             </Link>
 
-            {/* Desktop nav */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden items-center gap-1 md:flex">
               {navLinks.map((link) => {
                 const active = isActive(link);
-                const base =
-                  "relative px-4 py-2 text-sm font-500 transition-colors duration-300";
-                const cls = `${base} ${
-                  active
-                    ? "text-[var(--accent-lime)]"
-                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                const cls = `${linkBase} ${
+                  active ? "text-gold" : "text-pearl hover:text-bone"
                 }`;
                 if (link.kind === "page") {
                   return (
                     <Link key={link.href} href={link.href} className={cls}>
                       {link.label}
                       {active && (
-                        <motion.div
+                        <motion.span
                           layoutId="activeNav"
-                          className="absolute bottom-0 left-2 right-2 h-[2px] bg-[var(--accent-lime)]"
+                          className="absolute inset-x-3 bottom-1 block h-px bg-gold"
                           transition={{ duration: 0.3 }}
                         />
                       )}
@@ -127,9 +122,9 @@ export default function Navbar() {
                   >
                     {link.label}
                     {active && (
-                      <motion.div
+                      <motion.span
                         layoutId="activeNav"
-                        className="absolute bottom-0 left-2 right-2 h-[2px] bg-[var(--accent-lime)]"
+                        className="absolute inset-x-3 bottom-1 block h-px bg-gold"
                         transition={{ duration: 0.3 }}
                       />
                     )}
@@ -146,53 +141,55 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* CTA + Hamburger */}
             <div className="flex items-center gap-4">
               <Link
                 href="/sponsoring"
-                className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--accent-lime)] text-[var(--bg-deep)] text-sm font-600 rounded-full hover:brightness-110 transition-all duration-300 hover:shadow-[0_0_30px_rgba(200,238,68,0.3)]"
+                className="hidden border border-gold bg-gold px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-black transition-all hover:bg-gold-dark hover:border-gold-dark hover:-translate-y-px md:inline-flex"
               >
                 Soutenir
               </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden p-2 text-[var(--text-primary)]"
-                aria-label="Toggle menu"
+                className="p-2 text-bone md:hidden"
+                aria-label="Menu"
               >
-                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+                {mobileOpen ? (
+                  <X size={22} strokeWidth={1.3} />
+                ) : (
+                  <Menu size={22} strokeWidth={1.3} />
+                )}
               </button>
             </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#050810]/95 backdrop-blur-2xl pt-24"
+            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-2xl pt-24"
           >
-            <div className="flex flex-col items-center gap-2 px-6">
+            <div className="container-lk flex flex-col items-center gap-1">
               {navLinks.map((link, i) => {
-                const commonCls =
-                  "w-full py-4 text-center text-xl font-600 text-[var(--text-primary)] hover:text-[var(--accent-lime)] transition-colors border-b border-white/[0.04]";
+                const cls =
+                  "block w-full border-b border-border py-5 text-center text-lg tracking-[0.15em] uppercase font-medium text-bone transition-colors hover:text-gold";
                 if (link.kind === "page") {
                   return (
                     <motion.div
                       key={link.href}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.05 + 0.1 }}
+                      transition={{ delay: 0.1 + i * 0.04 }}
                       className="w-full"
                     >
                       <Link
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
-                        className={`block ${commonCls}`}
+                        className={cls}
                       >
                         {link.label}
                       </Link>
@@ -202,26 +199,26 @@ export default function Navbar() {
                 return isHome ? (
                   <motion.button
                     key={link.href}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 + 0.1 }}
+                    transition={{ delay: 0.1 + i * 0.04 }}
                     onClick={() => handleHashClick(link.href)}
-                    className={commonCls}
+                    className={cls}
                   >
                     {link.label}
                   </motion.button>
                 ) : (
                   <motion.div
                     key={link.href}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 + 0.1 }}
+                    transition={{ delay: 0.1 + i * 0.04 }}
                     className="w-full"
                   >
                     <Link
                       href={hashHref(link.href)}
                       onClick={() => setMobileOpen(false)}
-                      className={`block ${commonCls}`}
+                      className={cls}
                     >
                       {link.label}
                     </Link>
@@ -229,14 +226,15 @@ export default function Navbar() {
                 );
               })}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
+                className="pt-8"
               >
                 <Link
                   href="/sponsoring"
                   onClick={() => setMobileOpen(false)}
-                  className="mt-6 inline-flex items-center gap-2 px-8 py-3.5 bg-[var(--accent-lime)] text-[var(--bg-deep)] text-base font-600 rounded-full"
+                  className="inline-flex items-center gap-2 border border-gold bg-gold px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.18em] text-black"
                 >
                   Soutenir Lenart
                 </Link>

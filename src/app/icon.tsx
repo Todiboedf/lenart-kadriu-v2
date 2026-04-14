@@ -14,16 +14,17 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#050810",
-          color: "#f0ede8",
+          background: "#0a0a0a",
+          color: "#f8f6f0",
           fontSize: 20,
-          fontWeight: 900,
+          fontWeight: 500,
           letterSpacing: -1,
-          borderRadius: 6,
+          fontFamily: "serif",
+          fontStyle: "italic",
         }}
       >
         <span style={{ display: "flex" }}>
-          L<span style={{ color: "#c8ee44", display: "flex" }}>K</span>
+          L<span style={{ color: "#c9a84c", display: "flex" }}>K</span>
         </span>
       </div>
     ),
