@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import JOJCountdown from "./JOJCountdown";
 
 export default function JOBanner() {
   return (
@@ -19,7 +20,7 @@ export default function JOBanner() {
             {/* Diagonal accent stripe */}
             <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[var(--accent-lime)]/[0.05] to-transparent" />
 
-            <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 sm:p-8">
+            <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-6 sm:p-8">
               <div className="flex items-start sm:items-center gap-4 sm:gap-5">
                 <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--accent-lime)]/10 border border-[var(--accent-lime)]/20">
                   <span className="text-2xl">🏅</span>
@@ -34,14 +35,12 @@ export default function JOBanner() {
                     Jeux Olympiques Juniors 2026
                   </h3>
                   <p className="text-sm text-[var(--text-secondary)] mt-1">
-                    Hualien, Taïwan &middot; 29 juillet – 8 août 2026 &middot;
-                    Représentant officiel de la Ville de Vevey
+                    Représentant officiel de la Ville de Vevey &middot; 29
+                    juillet – 8 août 2026
                   </p>
                 </div>
               </div>
-              <div className="flex-shrink-0">
-                <span className="text-4xl">🇹🇼</span>
-              </div>
+              <JOJCountdown className="flex-shrink-0" align="end" size="md" />
             </div>
           </motion.div>
         </AnimatedSection>
