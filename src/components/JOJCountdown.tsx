@@ -52,42 +52,43 @@ export default function JOJCountdown({
     : `Temps restant avant la cérémonie d'ouverture des Jeux Olympiques de la Jeunesse de Hualien : ${diff.days} jours, ${diff.hours} heures, ${diff.minutes} minutes et ${diff.seconds} secondes.`;
 
   const alignClass = align === "end" ? "sm:items-end" : "sm:items-start";
-  const dayFontSize =
+  const daySize =
     size === "lg"
-      ? "text-5xl sm:text-7xl"
+      ? "text-6xl sm:text-8xl"
       : size === "sm"
-        ? "text-3xl sm:text-4xl"
-        : "text-4xl sm:text-5xl";
-  const timeFontSize =
+        ? "text-4xl sm:text-5xl"
+        : "text-5xl sm:text-6xl";
+  const timeSize =
     size === "lg"
-      ? "text-3xl sm:text-4xl"
+      ? "text-xl sm:text-2xl"
       : size === "sm"
-        ? "text-xl sm:text-2xl"
-        : "text-2xl sm:text-3xl";
+        ? "text-sm sm:text-base"
+        : "text-base sm:text-lg";
 
   return (
     <div
       role="timer"
       aria-live="polite"
       aria-label={ariaLabel}
-      className={`flex flex-col items-start ${alignClass} gap-1.5 ${className}`}
+      className={`flex flex-col items-start ${alignClass} gap-3 ${className}`}
     >
-      <div className="flex items-baseline gap-2 sm:gap-3 font-[var(--font-heading)] font-800 tracking-tight leading-none">
+      <span className="eyebrow">Compte à rebours</span>
+      <div className="flex items-baseline gap-3 leading-none">
         <span
           suppressHydrationWarning
-          className={`text-[var(--accent-lime)] ${dayFontSize}`}
+          className={`font-display font-400 text-gold tabular-nums ${daySize}`}
         >
-          J-{diff.days}
+          {diff.days}
         </span>
-        <span
-          suppressHydrationWarning
-          className={`hidden sm:inline text-[var(--text-primary)] tabular-nums ${timeFontSize}`}
-        >
-          {pad(diff.hours)}:{pad(diff.minutes)}:{pad(diff.seconds)}
+        <span className="text-sm tracking-[0.2em] uppercase text-pearl">
+          jours
         </span>
       </div>
-      <span className="text-[10px] sm:text-xs font-500 tracking-[0.18em] uppercase text-[var(--text-muted)]">
-        Hualien, Taïwan · 29 juillet 2026
+      <span
+        suppressHydrationWarning
+        className={`hidden tabular-nums text-pearl/80 sm:inline ${timeSize}`}
+      >
+        {pad(diff.hours)}:{pad(diff.minutes)}:{pad(diff.seconds)}
       </span>
     </div>
   );

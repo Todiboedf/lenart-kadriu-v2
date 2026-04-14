@@ -63,19 +63,6 @@
   --section-padding-y: 8rem;
   --nav-height: 88px;
 
-  /* Legacy aliases (transition, à supprimer après le design pass) */
-  --accent-lime: var(--gold);
-  --accent-lime-dim: var(--gold-dark);
-  --bg-deep: var(--black);
-  --bg-card: var(--black-elevated);
-  --bg-card-2: #1a1a1a;
-  --bg-elevated: #1a1a1a;
-  --text-primary: var(--bone);
-  --text-secondary: var(--pearl);
-  --text-muted: #6b6b6b;
-  --border-subtle: var(--border);
-  --border-accent: rgba(201, 168, 76, 0.35);
-  --font-heading: var(--font-display);
 }
 
 .dark {

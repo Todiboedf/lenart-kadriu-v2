@@ -2,215 +2,127 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import AnimatedSection from "./AnimatedSection";
-import { ExternalLink } from "lucide-react";
+import { ArrowUpRight, Building2, Award, Car } from "lucide-react";
+import { fadeUp, staggerContainer, viewInProps } from "@/lib/motion";
+import { PremiumButton } from "./ui/PremiumButton";
 
 const sponsors = [
   {
-    emoji: "🏢",
+    icon: Building2,
     name: "GHaas Management",
     desc: "Agence de management sportif",
     url: "https://www.ghaasmanagement.ch/",
   },
   {
-    emoji: "🎾",
+    icon: Award,
     name: "HEAD Tennis",
     desc: "Équipementier officiel",
     url: "https://www.head.com/fr_CH/shop-tennis",
   },
   {
-    emoji: "🚗",
+    icon: Car,
     name: "COY Centre Occasions Yvorne",
     desc: "Partenaire officiel",
     url: "https://www.facebook.com/100057236508975/about/",
   },
 ];
 
-const affiliationTags = ["Team Vaud", "Swiss Tennis", "Swiss Olympique"];
-
-const packages = [
-  {
-    name: "Prestige",
-    price: "10'000",
-    desc: "Logo sur tous les supports + présence médiatique",
-    detail: "Visibilité exclusive sur l'ensemble des canaux",
-    featured: true,
-  },
-  {
-    name: "Principal",
-    price: "8'000",
-    desc: "Logo sur site web, sac de sport et survêtement",
-    detail: "Visibilité continue sur tous les supports",
-    featured: false,
-  },
-  {
-    name: "Mobilité",
-    price: "4'000",
-    desc: "Logo sur sac de sport",
-    detail: "Haute visibilité en tournoi et lors des déplacements",
-    featured: false,
-  },
-  {
-    name: "Matériel",
-    price: "3'500",
-    desc: "Logo sur survêtement",
-    detail: "Visibilité lors des entraînements et compétitions",
-    featured: false,
-  },
-  {
-    name: "Digital",
-    price: "2'000",
-    desc: "Logo sur le site officiel",
-    detail:
-      "Visibilité permanente en ligne auprès de l'audience digitale",
-    featured: false,
-  },
-];
+const affiliations = ["Team Vaud", "Swiss Tennis", "Swiss Olympique"];
 
 export default function SponsorsSection() {
   return (
-    <section id="sponsors" className="relative py-24 sm:py-32">
-      <div className="absolute top-0 left-6 right-6 lg:left-8 lg:right-8 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent" />
-
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Sponsors */}
-        <AnimatedSection>
-          <span className="section-label">Sponsors</span>
-          <h2 className="font-[var(--font-heading)] text-4xl sm:text-5xl lg:text-6xl font-800 mt-4 mb-16 tracking-[-0.02em]">
-            Ceux Qui Croient en Lui
+    <section id="sponsors" className="relative border-t border-border py-24 sm:py-32">
+      <div className="container-lk">
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="mb-14 flex flex-col gap-4"
+        >
+          <span className="eyebrow">Partenaires</span>
+          <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
+            Ceux qui croient en lui
           </h2>
-        </AnimatedSection>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-24">
-          {sponsors.map((s, i) => (
-            <AnimatedSection key={i} delay={0.1 + i * 0.1}>
-              <motion.a
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{
-                  y: -6,
-                  borderColor: "rgba(200,238,68,0.2)",
-                }}
-                transition={{ duration: 0.3 }}
-                className="block h-full p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] transition-all group"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-3xl">{s.emoji}</span>
-                  <ExternalLink
-                    size={16}
-                    className="text-[var(--text-muted)] group-hover:text-[var(--accent-lime)] transition-colors"
-                  />
-                </div>
-                <h3 className="font-[var(--font-heading)] text-lg font-700 text-[var(--text-primary)] mb-1 group-hover:text-[var(--accent-lime)] transition-colors">
-                  {s.name}
+        <motion.div
+          {...viewInProps}
+          variants={staggerContainer}
+          className="mb-24 grid divide-y divide-border border-y border-border md:grid-cols-3 md:divide-x md:divide-y-0"
+        >
+          {sponsors.map(({ icon: Icon, name, desc, url }) => (
+            <motion.a
+              key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeUp}
+              className="group flex flex-col gap-4 p-8 transition-colors hover:bg-white/[0.02]"
+            >
+              <div className="flex items-start justify-between">
+                <Icon size={20} strokeWidth={1.3} className="text-gold" />
+                <ArrowUpRight
+                  size={16}
+                  strokeWidth={1.3}
+                  className="text-pearl/60 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <h3 className="font-display text-xl font-500 text-bone transition-colors group-hover:text-gold">
+                  {name}
                 </h3>
-                <p className="text-sm text-[var(--text-secondary)]">
-                  {s.desc}
-                </p>
-              </motion.a>
-            </AnimatedSection>
+                <p className="text-sm text-pearl">{desc}</p>
+              </div>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Affiliations */}
-        <AnimatedSection>
-          <span className="section-label">Affiliations</span>
-          <h3 className="font-[var(--font-heading)] text-2xl sm:text-3xl font-700 mt-4 mb-10">
-            Membres & Structures
-          </h3>
-        </AnimatedSection>
+        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+          <motion.div
+            {...viewInProps}
+            variants={fadeUp}
+            className="relative aspect-[16/9] overflow-hidden"
+          >
+            <Image
+              src="/assets/photo_olympique.jpg"
+              alt="Carte Swiss Olympique"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
-          <AnimatedSection delay={0.1}>
-            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden group">
-              <Image
-                src="/assets/photo_olympique.jpg"
-                alt="Carte Swiss Olympique"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050810]/40 to-transparent" />
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed mb-6">
-              Lenart est membre du Team Vaud, cadre vaudois et suprarégional
-              de Swiss Tennis, et affilié à Swiss Olympique. Ces structures
-              lui assurent un encadrement de haut niveau et lui ouvrent les
-              portes des compétitions nationales et internationales les plus
+          <motion.div
+            {...viewInProps}
+            variants={fadeUp}
+            className="flex flex-col gap-6"
+          >
+            <span className="eyebrow">Affiliations</span>
+            <h3 className="font-display text-3xl font-400 leading-[1.1] tracking-tight text-bone sm:text-4xl">
+              Membre des structures officielles du tennis suisse
+            </h3>
+            <p className="text-base leading-relaxed text-pearl sm:text-lg">
+              Lenart est membre du Team Vaud, cadre vaudois et suprarégional de
+              Swiss Tennis, et affilié à Swiss Olympique. Ces structures lui
+              assurent un encadrement de haut niveau et lui ouvrent les portes
+              des compétitions nationales et internationales les plus
               prestigieuses.
             </p>
             <div className="flex flex-wrap gap-2">
-              {affiliationTags.map((tag) => (
+              {affiliations.map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-2 text-sm font-500 rounded-full bg-[var(--accent-lime)]/10 border border-[var(--accent-lime)]/20 text-[var(--accent-lime)]"
+                  className="border border-gold/30 px-3.5 py-1.5 text-xs font-500 tracking-[0.1em] uppercase text-gold"
                 >
                   {tag}
                 </span>
               ))}
             </div>
-          </AnimatedSection>
-        </div>
-
-        {/* Partnership packages */}
-        <AnimatedSection>
-          <span className="section-label">Partenariat</span>
-          <h3 className="font-[var(--font-heading)] text-2xl sm:text-3xl font-700 mt-4 mb-10">
-            Offres de Partenariat
-          </h3>
-        </AnimatedSection>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {packages.map((pkg, i) => (
-            <AnimatedSection
-              key={i}
-              delay={0.1 + i * 0.08}
-              className={
-                pkg.featured ? "sm:col-span-2 lg:col-span-1" : ""
-              }
-            >
-              <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3 }}
-                className={`relative h-full p-6 rounded-xl border transition-all ${
-                  pkg.featured
-                    ? "bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-card-2)] border-[var(--accent-lime)]/30 accent-glow"
-                    : "bg-[var(--bg-card)] border-[var(--border-subtle)] hover:border-[var(--border-accent)]"
-                }`}
-              >
-                {pkg.featured && (
-                  <div className="absolute -top-3 left-6">
-                    <span className="px-3 py-1 text-[10px] font-600 tracking-[0.1em] uppercase bg-[var(--accent-lime)] text-[var(--bg-deep)] rounded-full">
-                      Recommandé
-                    </span>
-                  </div>
-                )}
-                <div className="mb-4">
-                  <h4 className="font-[var(--font-heading)] text-xl font-700 text-[var(--text-primary)] mb-1">
-                    {pkg.name}
-                  </h4>
-                  <div className="flex items-baseline gap-1">
-                    <span className="font-[var(--font-heading)] text-3xl font-800 text-[var(--accent-lime)]">
-                      {pkg.price}
-                    </span>
-                    <span className="text-sm text-[var(--text-secondary)]">
-                      CHF/an
-                    </span>
-                  </div>
-                </div>
-                <p className="text-sm text-[var(--text-primary)] font-500 mb-2">
-                  {pkg.desc}
-                </p>
-                <p className="text-xs text-[var(--text-secondary)]">
-                  {pkg.detail}
-                </p>
-              </motion.div>
-            </AnimatedSection>
-          ))}
+            <div className="mt-4">
+              <PremiumButton href="/sponsoring" variant="primary" size="md" withArrow>
+                Dossier sponsors
+              </PremiumButton>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

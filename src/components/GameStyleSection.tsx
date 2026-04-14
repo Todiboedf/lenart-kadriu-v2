@@ -2,116 +2,93 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import AnimatedSection from "./AnimatedSection";
 import { Zap, Brain, Target } from "lucide-react";
+import { fadeUp, staggerContainer, viewInProps } from "@/lib/motion";
 
 const qualities = [
   {
-    icon: <Zap className="w-5 h-5" />,
-    emoji: "⚡",
+    icon: Zap,
     title: "Offensif",
-    desc: "Initiative, intensité, pression constante",
+    desc: "Initiative, intensité, pression constante sur l'adversaire.",
   },
   {
-    icon: <Brain className="w-5 h-5" />,
-    emoji: "🧠",
+    icon: Brain,
     title: "Tactique",
-    desc: "Intelligence de jeu, lecture des adversaires",
+    desc: "Intelligence de jeu, lecture rapide des adversaires.",
   },
   {
-    icon: <Target className="w-5 h-5" />,
-    emoji: "🎾",
+    icon: Target,
     title: "Polyvalent",
-    desc: "Compétitif sur toutes les surfaces",
+    desc: "Compétitif sur dur, terre battue et gazon.",
   },
 ];
 
 export default function GameStyleSection() {
   return (
-    <section id="jeu" className="relative py-24 sm:py-32">
-      {/* Divider */}
-      <div className="absolute top-0 left-6 right-6 lg:left-8 lg:right-8 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent" />
-
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left: Text content */}
-          <div>
-            <AnimatedSection>
-              <span className="section-label">Style de jeu</span>
-              <h2 className="font-[var(--font-heading)] text-4xl sm:text-5xl lg:text-6xl font-800 mt-4 mb-10 tracking-[-0.02em]">
-                Un Jeu{" "}
-                <span className="text-[var(--accent-lime)]">Offensif</span>
-              </h2>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.1}>
-              <div className="space-y-5 mb-12">
-                <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
-                  Lenart possède un style de jeu résolument offensif, fondé
-                  sur une intensité constante et une pression permanente sur
-                  l&apos;adversaire. Il ne laisse aucun répit à ses opposants,
-                  les poussant à la faute par son rythme soutenu et son
-                  agressivité maîtrisée.
-                </p>
-                <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
-                  Sa grande force réside dans sa capacité à s&apos;adapter à
-                  toutes les surfaces — dur, terre battue ou gazon. Son
-                  intelligence tactique lui permet de s&apos;ajuster à tout
-                  type d&apos;adversaire, et son calme dans les moments
-                  décisifs fait de lui un compétiteur redoutable à son niveau.
-                </p>
-              </div>
-            </AnimatedSection>
-
-            {/* Quality cards */}
-            <AnimatedSection delay={0.2}>
-              <div className="space-y-4">
-                {qualities.map((q, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{
-                      x: 8,
-                      borderColor: "rgba(200,238,68,0.15)",
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="flex items-start gap-4 p-5 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] transition-all"
-                  >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[var(--accent-lime)]/10 border border-[var(--accent-lime)]/20 flex items-center justify-center text-[var(--accent-lime)]">
-                      {q.icon}
-                    </div>
-                    <div>
-                      <h3 className="font-[var(--font-heading)] text-lg font-700 text-[var(--text-primary)] mb-0.5">
-                        {q.emoji} {q.title}
-                      </h3>
-                      <p className="text-sm text-[var(--text-secondary)]">
-                        {q.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </AnimatedSection>
+    <section id="jeu" className="relative border-t border-border py-24 sm:py-32">
+      <div className="container-lk grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="flex flex-col gap-8"
+        >
+          <div className="flex flex-col gap-4">
+            <span className="eyebrow">Style de jeu</span>
+            <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
+              Un jeu <em className="font-400 text-gold">offensif</em>
+            </h2>
           </div>
+          <p className="text-base leading-relaxed text-pearl sm:text-lg">
+            Lenart possède un style de jeu résolument offensif, fondé sur une
+            intensité constante et une pression permanente. Il ne laisse aucun
+            répit à ses opposants, les poussant à la faute par son rythme
+            soutenu et son agressivité maîtrisée.
+          </p>
+          <p className="text-base leading-relaxed text-pearl sm:text-lg">
+            Sa force réside dans sa capacité à s&apos;adapter à toutes les
+            surfaces. Son intelligence tactique lui permet de s&apos;ajuster à
+            tout type d&apos;adversaire, et son calme dans les moments
+            décisifs fait de lui un compétiteur redoutable à son niveau.
+          </p>
 
-          {/* Right: Action photo */}
-          <AnimatedSection delay={0.15}>
-            <div className="relative">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden group">
-                <Image
-                  src="/assets/photo_4.jpg"
-                  alt="Lenart Kadriu en match"
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050810]/60 via-transparent to-transparent" />
-              </div>
-              {/* Decorative accent */}
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-[var(--accent-lime)]/20 rounded-bl-2xl" />
-              <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-[var(--accent-lime)]/20 rounded-tr-2xl" />
-            </div>
-          </AnimatedSection>
-        </div>
+          <motion.ul
+            {...viewInProps}
+            variants={staggerContainer}
+            className="mt-4 flex flex-col divide-y divide-border"
+          >
+            {qualities.map(({ icon: Icon, title, desc }) => (
+              <motion.li
+                key={title}
+                variants={fadeUp}
+                className="flex items-start gap-5 py-5"
+              >
+                <Icon size={18} strokeWidth={1.3} className="mt-1 flex-shrink-0 text-gold" />
+                <div>
+                  <h3 className="font-display text-xl font-500 text-bone">
+                    {title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-pearl">
+                    {desc}
+                  </p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </motion.div>
+
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="relative aspect-[4/5] overflow-hidden"
+        >
+          <Image
+            src="/assets/photo_4.jpg"
+            alt="Lenart Kadriu en match"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        </motion.div>
       </div>
     </section>
   );

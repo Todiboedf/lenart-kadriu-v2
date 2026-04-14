@@ -1,48 +1,52 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Download,
-  MailPlus,
-  Trophy,
-  ShieldCheck,
+  Mail,
   Medal,
+  Trophy,
   Sparkles,
-  Instagram,
-  Camera,
-  Megaphone,
-  LineChart,
+  ShieldCheck,
+  Eye,
+  Newspaper,
+  BarChart3,
+  Tv,
   Check,
-  ExternalLink,
+  ArrowUpRight,
+  Building2,
+  Award,
+  Car,
 } from "lucide-react";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import AnimatedSection from "./AnimatedSection";
 import JOJCountdown from "./JOJCountdown";
+import { PremiumButton } from "./ui/PremiumButton";
+import { GoldDivider } from "./ui/GoldDivider";
+import { fadeUp, staggerContainer, viewInProps } from "@/lib/motion";
 
 const DOSSIER_HREF = "/dossier-sponsors-lenart-2026.pdf";
 
 const whyCards = [
   {
-    icon: <Medal className="w-5 h-5" />,
+    icon: Medal,
     title: "Qualifié aux JOJ 2026",
     desc: "Hualien, Taïwan · 29 juillet – 8 août 2026. Représentant officiel de la Ville de Vevey aux Jeux Olympiques de la Jeunesse.",
   },
   {
-    icon: <Trophy className="w-5 h-5" />,
-    title: "Palmarès européen solide",
+    icon: Trophy,
+    title: "Palmarès européen",
     desc: "7+ titres européens, vainqueur à Split (Croatie), finaliste Tirana, Shkodra, Poreč, 4× champion vaudois, vainqueur TC Gland 2025.",
   },
   {
-    icon: <Sparkles className="w-5 h-5" />,
+    icon: Sparkles,
     title: "Formation haut niveau",
     desc: "Né en 2012 à Vevey, 4 ans à la première raquette. Tennis Nestlé Club de Mont-Pèlerin. Tactique et sang-froid reconnus pour son âge.",
   },
   {
-    icon: <ShieldCheck className="w-5 h-5" />,
+    icon: ShieldCheck,
     title: "Encadrement officiel",
     desc: "Membre du Team Vaud, cadre vaudois et suprarégional de Swiss Tennis, affilié à Swiss Olympique. Équipementier HEAD.",
   },
@@ -51,8 +55,8 @@ const whyCards = [
 const packages = [
   {
     name: "Bronze",
-    price: "5 000",
     tag: "Entrée",
+    price: "5 000",
     highlight: false,
     includes: [
       "Logo sur le site officiel lenartkadriu.com",
@@ -63,8 +67,8 @@ const packages = [
   },
   {
     name: "Silver",
-    price: "12 000",
     tag: "Engagement",
+    price: "12 000",
     highlight: true,
     includes: [
       "Inclut l'ensemble du pack Bronze",
@@ -76,62 +80,57 @@ const packages = [
   },
   {
     name: "Gold",
-    price: "25 000",
     tag: "Premium",
+    price: "25 000",
     highlight: false,
     includes: [
       "Inclut l'ensemble du pack Silver",
-      "Logo sur tenue de match (haute visibilité)",
+      "Logo sur tenue de match — haute visibilité",
       "1 événement partenaire annuel (meet & greet / clinic)",
       "Reporting KPI trimestriel (portée, presse, audience)",
       "Présence sur le dossier JOJ officiel + communiqués",
-      "Droit d'usage de l'image pour la marque (cadre à définir)",
     ],
   },
 ];
 
 const kpis = [
   {
-    icon: <Instagram className="w-5 h-5" />,
+    icon: Eye,
     label: "Portée réseaux cible",
-    value: "[projection]",
     hint: "Audience Suisse romande + communauté tennis junior",
   },
   {
-    icon: <Megaphone className="w-5 h-5" />,
+    icon: Newspaper,
     label: "Couverture presse JOJ",
-    value: "[projection]",
     hint: "Médias régionaux vaudois + nationaux sports",
   },
   {
-    icon: <Camera className="w-5 h-5" />,
+    icon: Tv,
     label: "Apparitions live JOJ",
-    value: "[projection]",
     hint: "Matches Hualien · retransmissions et replays",
   },
   {
-    icon: <LineChart className="w-5 h-5" />,
+    icon: BarChart3,
     label: "Audience Swiss Tennis",
-    value: "[projection]",
     hint: "Écosystème officiel Swiss Tennis + Swiss Olympique",
   },
 ];
 
 const trustedBy = [
   {
-    emoji: "🏢",
+    icon: Building2,
     name: "GHaas Management",
     desc: "Management sportif",
     url: "https://www.ghaasmanagement.ch/",
   },
   {
-    emoji: "🎾",
+    icon: Award,
     name: "HEAD Tennis",
     desc: "Équipementier officiel",
     url: "https://www.head.com/fr_CH/shop-tennis",
   },
   {
-    emoji: "🚗",
+    icon: Car,
     name: "COY Yvorne",
     desc: "Partenaire officiel",
     url: "https://www.facebook.com/100057236508975/about/",
@@ -142,61 +141,81 @@ const affiliations = ["Team Vaud", "Swiss Tennis", "Swiss Olympique"];
 
 function SponsoringHero() {
   return (
-    <section className="relative overflow-hidden pt-32 sm:pt-40 pb-20 sm:pb-28">
+    <section className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-28">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/photo_trophy.jpg"
+          src="/assets/photo_6.jpg"
           alt=""
           fill
           priority
-          className="object-cover object-top opacity-30"
+          quality={90}
+          className="object-cover object-top opacity-40"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050810] via-[#050810]/80 to-[#050810]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/70 to-black" />
       </div>
-      <div className="stadium-light w-[700px] h-[700px] bg-[var(--accent-lime)] top-[-200px] right-[-200px]" />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <AnimatedSection>
-          <span className="section-label">Sponsoring</span>
-        </AnimatedSection>
-        <AnimatedSection delay={0.1}>
-          <h1 className="font-[var(--font-heading)] text-4xl sm:text-6xl lg:text-7xl font-800 mt-4 mb-6 tracking-[-0.02em] leading-[1.02] max-w-4xl">
-            Devenez partenaire d&apos;un futur{" "}
-            <span className="gradient-text">champion suisse</span>
-          </h1>
-        </AnimatedSection>
-        <AnimatedSection delay={0.2}>
-          <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed mb-10">
-            Lenart Kadriu est qualifié aux Jeux Olympiques de la Jeunesse de
-            Hualien. La fenêtre pour s&apos;associer à son parcours se ferme
-            avec la cérémonie d&apos;ouverture.
-          </p>
-        </AnimatedSection>
-        <AnimatedSection delay={0.3}>
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-8 mb-10">
-            <JOJCountdown align="start" size="lg" />
-          </div>
-        </AnimatedSection>
-        <AnimatedSection delay={0.4}>
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={DOSSIER_HREF}
-              download
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--accent-lime)] text-[var(--bg-deep)] text-sm font-600 rounded-full hover:brightness-110 transition-all duration-300 hover:shadow-[0_0_30px_rgba(200,238,68,0.3)]"
-            >
-              <Download size={16} />
-              Télécharger le dossier
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border-subtle)] hover:border-[var(--border-accent)] text-[var(--text-primary)] text-sm font-600 rounded-full transition-all"
-            >
-              <MailPlus size={16} />
-              Prendre contact
-            </a>
-          </div>
-        </AnimatedSection>
+      <div className="container-lk flex flex-col gap-10">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center gap-3 text-xs tracking-[0.22em] uppercase text-gold"
+        >
+          <span className="block h-px w-8 bg-gold/70" />
+          <span>Sponsoring · JOJ Hualien 2026</span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display text-[clamp(2.75rem,7vw,6rem)] font-300 leading-[0.95] tracking-tight text-bone max-w-5xl"
+        >
+          Devenez partenaire d&apos;un{" "}
+          <em className="font-400 text-gold">futur champion suisse</em>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.9 }}
+          className="max-w-2xl text-base leading-relaxed text-bone/80 sm:text-lg"
+        >
+          Lenart Kadriu est qualifié aux Jeux Olympiques de la Jeunesse de
+          Hualien. La fenêtre pour s&apos;associer à son parcours se ferme
+          avec la cérémonie d&apos;ouverture.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.9 }}
+        >
+          <JOJCountdown align="start" size="lg" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.65, duration: 0.9 }}
+          className="flex flex-col gap-3 sm:flex-row sm:gap-4"
+        >
+          <PremiumButton
+            href={DOSSIER_HREF}
+            variant="primary"
+            size="md"
+            withArrow
+            download
+          >
+            <span className="flex items-center gap-2">
+              <Download size={13} strokeWidth={1.5} /> Télécharger le dossier
+            </span>
+          </PremiumButton>
+          <PremiumButton href="#contact" variant="secondary" size="md">
+            Prendre contact
+          </PremiumButton>
+        </motion.div>
       </div>
     </section>
   );
@@ -204,37 +223,39 @@ function SponsoringHero() {
 
 function WhyNow() {
   return (
-    <section className="relative py-24 sm:py-28">
-      <div className="absolute top-0 left-6 right-6 lg:left-8 lg:right-8 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent" />
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <AnimatedSection>
-          <span className="section-label">Pourquoi maintenant</span>
-          <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl lg:text-5xl font-800 mt-4 mb-12 tracking-[-0.02em] max-w-3xl">
+    <section className="relative border-t border-border py-24 sm:py-28">
+      <div className="container-lk">
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="mb-14 flex flex-col gap-4"
+        >
+          <span className="eyebrow">Pourquoi maintenant</span>
+          <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
             L&apos;opportunité d&apos;un parcours{" "}
-            <span className="gradient-text">qualifié JOJ</span>
+            <em className="font-400 text-gold">qualifié JOJ</em>
           </h2>
-        </AnimatedSection>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {whyCards.map((card, i) => (
-            <AnimatedSection key={i} delay={0.1 + i * 0.08}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="h-full p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition-colors"
-              >
-                <div className="w-10 h-10 rounded-lg bg-[var(--accent-lime)]/10 border border-[var(--accent-lime)]/20 flex items-center justify-center text-[var(--accent-lime)] mb-4">
-                  {card.icon}
-                </div>
-                <h3 className="font-[var(--font-heading)] text-lg font-700 text-[var(--text-primary)] mb-2">
-                  {card.title}
-                </h3>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {card.desc}
-                </p>
-              </motion.div>
-            </AnimatedSection>
+        </motion.div>
+
+        <motion.div
+          {...viewInProps}
+          variants={staggerContainer}
+          className="grid divide-y divide-border border-y border-border md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4"
+        >
+          {whyCards.map(({ icon: Icon, title, desc }) => (
+            <motion.article
+              key={title}
+              variants={fadeUp}
+              className="flex flex-col gap-4 p-8"
+            >
+              <Icon size={20} strokeWidth={1.3} className="text-gold" />
+              <h3 className="font-display text-xl font-500 text-bone">
+                {title}
+              </h3>
+              <p className="text-sm leading-relaxed text-pearl">{desc}</p>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -242,92 +263,94 @@ function WhyNow() {
 
 function Packages() {
   return (
-    <section className="relative py-24 sm:py-28">
-      <div className="absolute top-0 left-6 right-6 lg:left-8 lg:right-8 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent" />
-      <div className="stadium-light w-[500px] h-[500px] bg-[var(--accent-lime)] bottom-[10%] left-[-200px]" />
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <AnimatedSection>
-          <span className="section-label">Packages</span>
-          <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl lg:text-5xl font-800 mt-4 mb-3 tracking-[-0.02em]">
+    <section className="relative border-t border-border py-24 sm:py-28">
+      <div className="container-lk">
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="mb-4 flex flex-col gap-4"
+        >
+          <span className="eyebrow">Packages</span>
+          <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
             Trois niveaux de partenariat
           </h2>
-          <p className="text-sm text-[var(--text-secondary)] max-w-2xl mb-12">
-            Les montants ci-dessous sont{" "}
-            <span className="text-[var(--text-primary)] font-500">
-              indicatifs — à confirmer
-            </span>{" "}
-            avec Guillaume Haas. Chaque partenariat est construit sur-mesure
-            autour de la saison et de la qualification JOJ.
-          </p>
-        </AnimatedSection>
+        </motion.div>
+        <motion.p
+          {...viewInProps}
+          variants={fadeUp}
+          className="mb-14 max-w-2xl text-sm text-pearl"
+        >
+          Les montants ci-dessous sont{" "}
+          <span className="text-bone">indicatifs — à confirmer</span> avec
+          Guillaume Haas. Chaque partenariat est construit sur-mesure autour de
+          la saison et de la qualification JOJ.
+        </motion.p>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {packages.map((pkg, i) => (
-            <AnimatedSection key={pkg.name} delay={0.1 + i * 0.08}>
-              <motion.article
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3 }}
-                className={`relative h-full p-6 sm:p-7 rounded-2xl border transition-all flex flex-col ${
-                  pkg.highlight
-                    ? "bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-card-2)] border-[var(--accent-lime)]/40 accent-glow"
-                    : "bg-[var(--bg-card)] border-[var(--border-subtle)] hover:border-[var(--border-accent)]"
-                }`}
-              >
-                {pkg.highlight && (
-                  <div className="absolute -top-3 left-6">
-                    <span className="px-3 py-1 text-[10px] font-600 tracking-[0.1em] uppercase bg-[var(--accent-lime)] text-[var(--bg-deep)] rounded-full">
-                      Recommandé
-                    </span>
-                  </div>
-                )}
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-[var(--font-heading)] text-2xl font-800 text-[var(--text-primary)]">
-                    {pkg.name}
-                  </h3>
-                  <span className="text-[10px] font-600 tracking-[0.1em] uppercase text-[var(--text-muted)]">
-                    {pkg.tag}
-                  </span>
-                </div>
-                <div className="mb-1 flex items-baseline gap-2">
-                  <span className="font-[var(--font-heading)] text-4xl font-800 text-[var(--accent-lime)]">
+        <motion.div
+          {...viewInProps}
+          variants={staggerContainer}
+          className="grid gap-10 md:grid-cols-3"
+        >
+          {packages.map((pkg) => (
+            <motion.article
+              key={pkg.name}
+              variants={fadeUp}
+              className={`relative flex flex-col gap-6 border-t pt-8 ${
+                pkg.highlight ? "border-gold" : "border-border"
+              }`}
+            >
+              {pkg.highlight && (
+                <span className="absolute -top-3 left-0 bg-black pr-3 text-[10px] font-medium tracking-[0.22em] uppercase text-gold">
+                  Recommandé
+                </span>
+              )}
+              <div className="flex items-baseline justify-between">
+                <h3 className="font-display text-3xl font-400 text-bone">
+                  {pkg.name}
+                </h3>
+                <span className="text-[10px] tracking-[0.22em] uppercase text-pearl/70">
+                  {pkg.tag}
+                </span>
+              </div>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-baseline gap-2">
+                  <span className="font-display text-5xl font-400 text-gold">
                     {pkg.price}
                   </span>
-                  <span className="text-sm text-[var(--text-secondary)]">
-                    CHF / an
-                  </span>
+                  <span className="text-sm text-pearl">CHF / an</span>
                 </div>
-                <span className="inline-block mb-5 text-[10px] font-500 uppercase tracking-[0.12em] text-[var(--text-muted)]">
-                  [indicatif — à confirmer]
+                <span className="text-[10px] tracking-[0.22em] uppercase text-pearl/60">
+                  Indicatif — à confirmer
                 </span>
-                <ul className="space-y-3 mb-8 flex-1">
-                  {pkg.includes.map((line, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-2.5 text-sm text-[var(--text-secondary)]"
-                    >
-                      <Check
-                        size={16}
-                        className="text-[var(--accent-lime)] mt-0.5 flex-shrink-0"
-                      />
-                      <span>{line}</span>
-                    </li>
-                  ))}
-                </ul>
-                <a
+              </div>
+              <ul className="flex flex-col gap-3">
+                {pkg.includes.map((line, j) => (
+                  <li
+                    key={j}
+                    className="flex items-start gap-3 text-sm leading-relaxed text-bone/90"
+                  >
+                    <Check
+                      size={14}
+                      strokeWidth={1.5}
+                      className="mt-1 flex-shrink-0 text-gold"
+                    />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="pt-2">
+                <PremiumButton
                   href="#contact"
-                  aria-label={`Nous contacter pour le package ${pkg.name}`}
-                  className={`inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-600 rounded-full transition-all ${
-                    pkg.highlight
-                      ? "bg-[var(--accent-lime)] text-[var(--bg-deep)] hover:brightness-110 hover:shadow-[0_0_30px_rgba(200,238,68,0.3)]"
-                      : "border border-[var(--border-subtle)] hover:border-[var(--border-accent)] text-[var(--text-primary)]"
-                  }`}
+                  variant={pkg.highlight ? "primary" : "secondary"}
+                  size="sm"
+                  withArrow
                 >
                   Nous contacter
-                </a>
-              </motion.article>
-            </AnimatedSection>
+                </PremiumButton>
+              </div>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -335,44 +358,52 @@ function Packages() {
 
 function KPIs() {
   return (
-    <section className="relative py-24 sm:py-28">
-      <div className="absolute top-0 left-6 right-6 lg:left-8 lg:right-8 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent" />
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <AnimatedSection>
-          <span className="section-label">KPIs prévisionnels</span>
-          <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl lg:text-5xl font-800 mt-4 mb-3 tracking-[-0.02em]">
+    <section className="relative border-t border-border py-24 sm:py-28">
+      <div className="container-lk">
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="mb-4 flex flex-col gap-4"
+        >
+          <span className="eyebrow">KPIs prévisionnels</span>
+          <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
             Les retombées attendues
           </h2>
-          <p className="text-sm text-[var(--text-secondary)] max-w-2xl mb-12">
-            Les indicateurs ci-dessous sont des projections liées à la
-            qualification JOJ et à l&apos;écosystème Swiss Tennis. Ils seront
-            chiffrés et reportés trimestriellement dans le package Gold.
-          </p>
-        </AnimatedSection>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {kpis.map((kpi, i) => (
-            <AnimatedSection key={kpi.label} delay={0.1 + i * 0.08}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3 }}
-                className="h-full p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-[var(--border-accent)] transition-colors"
-              >
-                <div className="w-10 h-10 rounded-lg bg-[var(--accent-lime)]/10 border border-[var(--accent-lime)]/20 flex items-center justify-center text-[var(--accent-lime)] mb-4">
-                  {kpi.icon}
-                </div>
-                <div className="font-[var(--font-heading)] text-xl font-800 text-[var(--accent-lime)] mb-1">
-                  {kpi.value}
-                </div>
-                <h3 className="text-sm font-600 text-[var(--text-primary)] mb-1">
-                  {kpi.label}
+        </motion.div>
+        <motion.p
+          {...viewInProps}
+          variants={fadeUp}
+          className="mb-14 max-w-2xl text-sm text-pearl"
+        >
+          Projections liées à la qualification JOJ et à l&apos;écosystème Swiss
+          Tennis. Chiffrages définitifs reportés trimestriellement dans le
+          package Gold.
+        </motion.p>
+
+        <motion.div
+          {...viewInProps}
+          variants={staggerContainer}
+          className="grid divide-y divide-border border-y border-border md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4"
+        >
+          {kpis.map(({ icon: Icon, label, hint }) => (
+            <motion.article
+              key={label}
+              variants={fadeUp}
+              className="flex flex-col gap-4 p-8"
+            >
+              <Icon size={20} strokeWidth={1.3} className="text-gold" />
+              <div className="flex flex-col gap-1">
+                <h3 className="font-display text-xl font-500 text-bone">
+                  {label}
                 </h3>
-                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                  {kpi.hint}
-                </p>
-              </motion.div>
-            </AnimatedSection>
+                <span className="text-[10px] tracking-[0.22em] uppercase text-gold/80">
+                  Projection
+                </span>
+              </div>
+              <p className="text-sm leading-relaxed text-pearl">{hint}</p>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -380,58 +411,65 @@ function KPIs() {
 
 function TrustedBy() {
   return (
-    <section className="relative py-24 sm:py-28">
-      <div className="absolute top-0 left-6 right-6 lg:left-8 lg:right-8 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent" />
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <AnimatedSection>
-          <span className="section-label">Ils nous font confiance</span>
-          <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl lg:text-5xl font-800 mt-4 mb-12 tracking-[-0.02em]">
+    <section className="relative border-t border-border py-24 sm:py-28">
+      <div className="container-lk">
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="mb-14 flex flex-col gap-4"
+        >
+          <span className="eyebrow">Ils nous font confiance</span>
+          <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
             Partenaires actuels
           </h2>
-        </AnimatedSection>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {trustedBy.map((s, i) => (
-            <AnimatedSection key={s.name} delay={0.1 + i * 0.08}>
-              <motion.a
-                href={s.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{
-                  y: -4,
-                  borderColor: "rgba(200,238,68,0.2)",
-                }}
-                transition={{ duration: 0.3 }}
-                className="block h-full p-6 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] transition-all group"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-3xl">{s.emoji}</span>
-                  <ExternalLink
-                    size={16}
-                    className="text-[var(--text-muted)] group-hover:text-[var(--accent-lime)] transition-colors"
-                  />
-                </div>
-                <h3 className="font-[var(--font-heading)] text-lg font-700 text-[var(--text-primary)] mb-1 group-hover:text-[var(--accent-lime)] transition-colors">
-                  {s.name}
+        <motion.div
+          {...viewInProps}
+          variants={staggerContainer}
+          className="mb-14 grid divide-y divide-border border-y border-border md:grid-cols-3 md:divide-x md:divide-y-0"
+        >
+          {trustedBy.map(({ icon: Icon, name, desc, url }) => (
+            <motion.a
+              key={name}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              variants={fadeUp}
+              className="group flex flex-col gap-4 p-8 transition-colors hover:bg-white/[0.02]"
+            >
+              <div className="flex items-start justify-between">
+                <Icon size={20} strokeWidth={1.3} className="text-gold" />
+                <ArrowUpRight
+                  size={16}
+                  strokeWidth={1.3}
+                  className="text-pearl/60 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <h3 className="font-display text-xl font-500 text-bone transition-colors group-hover:text-gold">
+                  {name}
                 </h3>
-                <p className="text-sm text-[var(--text-secondary)]">{s.desc}</p>
-              </motion.a>
-            </AnimatedSection>
+                <p className="text-sm text-pearl">{desc}</p>
+              </div>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
 
-        <AnimatedSection delay={0.3}>
-          <div className="flex flex-wrap gap-2">
-            {affiliations.map((tag) => (
-              <span
-                key={tag}
-                className="px-4 py-2 text-sm font-500 rounded-full bg-[var(--accent-lime)]/10 border border-[var(--accent-lime)]/20 text-[var(--accent-lime)]"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </AnimatedSection>
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="flex flex-wrap gap-2"
+        >
+          {affiliations.map((tag) => (
+            <span
+              key={tag}
+              className="border border-gold/30 px-3.5 py-1.5 text-xs font-500 tracking-[0.1em] uppercase text-gold"
+            >
+              {tag}
+            </span>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
@@ -439,70 +477,68 @@ function TrustedBy() {
 
 function Contact() {
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
-      <div className="absolute top-0 left-6 right-6 lg:left-8 lg:right-8 h-px bg-gradient-to-r from-transparent via-[var(--border-subtle)] to-transparent" />
-      <div className="stadium-light w-[500px] h-[500px] bg-[var(--accent-lime)] top-[20%] right-[-200px]" />
-
-      <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-        <AnimatedSection>
-          <span className="section-label justify-center">Contact</span>
-          <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl lg:text-5xl font-800 mt-4 mb-6 tracking-[-0.02em]">
-            Parlons de votre <span className="gradient-text">partenariat</span>
+    <section
+      id="contact"
+      className="relative border-t border-border py-24 sm:py-32"
+    >
+      <div className="container-lk max-w-4xl text-center">
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="flex flex-col items-center gap-6"
+        >
+          <span className="eyebrow">Contact</span>
+          <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
+            Parlons de votre{" "}
+            <em className="font-400 text-gold">partenariat</em>
           </h2>
-        </AnimatedSection>
-        <AnimatedSection delay={0.1}>
-          <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed mb-10 max-w-2xl mx-auto">
+          <GoldDivider width="md" />
+          <p className="max-w-2xl text-base leading-relaxed text-pearl sm:text-lg">
             Guillaume Haas, fondateur de GHaas Management SA, répond
             personnellement à toutes les sollicitations sponsors. Chaque
             proposition est étudiée sous 48&nbsp;h.
           </p>
-        </AnimatedSection>
+        </motion.div>
 
-        <AnimatedSection delay={0.2}>
-          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 p-6 sm:p-7 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-subtle)] mb-10">
-            <div className="text-left">
-              <p className="text-xs font-600 tracking-[0.15em] uppercase text-[var(--accent-lime)] mb-1">
-                Guillaume Haas
-              </p>
-              <p className="text-sm text-[var(--text-secondary)]">
-                GHaas Management SA
-              </p>
-            </div>
-            <div className="hidden sm:block w-px h-10 bg-[var(--border-subtle)]" />
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="mt-14 flex flex-col items-center gap-8"
+        >
+          <div className="flex flex-col items-center gap-2">
+            <span className="eyebrow">Guillaume Haas</span>
+            <span className="text-sm text-pearl">GHaas Management SA</span>
             <a
               href="mailto:ghaasmanagement@gmail.com"
-              className="font-[var(--font-heading)] text-base sm:text-lg font-700 text-[var(--text-primary)] hover:text-[var(--accent-lime)] transition-colors"
+              className="mt-2 font-display text-2xl italic text-bone transition-colors hover:text-gold sm:text-3xl"
             >
               ghaasmanagement@gmail.com
             </a>
           </div>
-        </AnimatedSection>
 
-        <AnimatedSection delay={0.3}>
-          <div className="flex flex-wrap justify-center gap-3">
-            <a
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+            <PremiumButton
               href={DOSSIER_HREF}
+              variant="primary"
+              size="md"
+              withArrow
               download
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--accent-lime)] text-[var(--bg-deep)] text-sm font-600 rounded-full hover:brightness-110 transition-all duration-300 hover:shadow-[0_0_30px_rgba(200,238,68,0.3)]"
             >
-              <Download size={16} />
-              Télécharger le dossier
-            </a>
-            <a
+              <span className="flex items-center gap-2">
+                <Download size={13} strokeWidth={1.5} /> Télécharger le dossier
+              </span>
+            </PremiumButton>
+            <PremiumButton
               href="mailto:ghaasmanagement@gmail.com?subject=Partenariat%20Lenart%20Kadriu%20%E2%80%94%20JOJ%20Hualien%202026"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--border-subtle)] hover:border-[var(--border-accent)] text-[var(--text-primary)] text-sm font-600 rounded-full transition-all"
+              variant="secondary"
+              size="md"
             >
-              <MailPlus size={16} />
-              Envoyer un email
-            </a>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-sm font-500 rounded-full transition-colors"
-            >
-              Retour au site
-            </Link>
+              <span className="flex items-center gap-2">
+                <Mail size={13} strokeWidth={1.5} /> Envoyer un email
+              </span>
+            </PremiumButton>
           </div>
-        </AnimatedSection>
+        </motion.div>
       </div>
     </section>
   );

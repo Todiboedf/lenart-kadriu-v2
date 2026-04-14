@@ -10,7 +10,7 @@ export const contentType = "image/png";
 
 export default async function OpengraphImage() {
   const imgBuffer = fs.readFileSync(
-    path.join(process.cwd(), "public/assets/photo_identite.jpg"),
+    path.join(process.cwd(), "public/assets/photo_7.jpg"),
   );
   const imgSrc = `data:image/jpeg;base64,${imgBuffer.toString("base64")}`;
 
@@ -21,7 +21,7 @@ export default async function OpengraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          background: "#050810",
+          background: "#0a0a0a",
           position: "relative",
         }}
       >
@@ -34,7 +34,7 @@ export default async function OpengraphImage() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.4,
+            opacity: 0.5,
           }}
         />
         <div
@@ -43,7 +43,7 @@ export default async function OpengraphImage() {
             inset: 0,
             display: "flex",
             background:
-              "linear-gradient(to right, rgba(5,8,16,0.95) 0%, rgba(5,8,16,0.55) 65%, rgba(5,8,16,0.25) 100%)",
+              "linear-gradient(to right, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,0.3) 100%)",
           }}
         />
         <div
@@ -52,7 +52,7 @@ export default async function OpengraphImage() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "64px 80px",
+            padding: "72px 88px",
             zIndex: 2,
             width: "100%",
             height: "100%",
@@ -62,20 +62,20 @@ export default async function OpengraphImage() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 18,
-              color: "#c8ee44",
-              fontSize: 18,
-              letterSpacing: 4,
+              gap: 20,
+              color: "#c9a84c",
+              fontSize: 16,
+              letterSpacing: 5,
               textTransform: "uppercase",
-              fontWeight: 700,
+              fontWeight: 600,
             }}
           >
             <span
               style={{
                 display: "flex",
                 width: 56,
-                height: 2,
-                background: "#c8ee44",
+                height: 1,
+                background: "#c9a84c",
               }}
             />
             JOJ Hualien 2026
@@ -89,34 +89,38 @@ export default async function OpengraphImage() {
           >
             <div
               style={{
-                fontSize: 140,
-                fontWeight: 900,
-                color: "#f0ede8",
-                letterSpacing: -4,
-                lineHeight: 1,
+                fontSize: 136,
+                fontWeight: 300,
+                color: "#f8f6f0",
+                letterSpacing: -3,
+                lineHeight: 0.95,
                 display: "flex",
+                fontFamily: "serif",
               }}
             >
-              LENART
+              Lenart
             </div>
             <div
               style={{
-                fontSize: 140,
-                fontWeight: 900,
-                color: "#c8ee44",
-                letterSpacing: -4,
-                lineHeight: 1,
+                fontSize: 136,
+                fontWeight: 400,
+                color: "#c9a84c",
+                letterSpacing: -3,
+                lineHeight: 0.95,
                 display: "flex",
+                fontStyle: "italic",
+                fontFamily: "serif",
               }}
             >
-              KADRIU
+              Kadriu
             </div>
             <div
               style={{
-                fontSize: 30,
-                color: "#f0ede8",
-                marginTop: 28,
+                fontSize: 26,
+                color: "#f8f6f0",
+                marginTop: 32,
                 display: "flex",
+                opacity: 0.85,
               }}
             >
               Tennisman suisse U14 · Qualifié JOJ Hualien 2026
@@ -127,16 +131,16 @@ export default async function OpengraphImage() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-end",
-              color: "#8896a8",
-              fontSize: 22,
+              color: "#a8a8a8",
+              fontSize: 20,
             }}
           >
             <span
               style={{
-                color: "#c8ee44",
+                color: "#c9a84c",
                 letterSpacing: 4,
                 textTransform: "uppercase",
-                fontWeight: 600,
+                fontWeight: 500,
               }}
             >
               lenartkadriu.com

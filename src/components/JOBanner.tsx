@@ -1,49 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
-import AnimatedSection from "./AnimatedSection";
+import { MapPin } from "lucide-react";
+import { fadeUp, viewInProps } from "@/lib/motion";
 import JOJCountdown from "./JOJCountdown";
 
 export default function JOBanner() {
   return (
-    <section className="relative py-6 overflow-hidden">
-      {/* Accent glow behind */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--accent-lime)]/[0.03] to-transparent" />
-
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <AnimatedSection>
-          <motion.div
-            whileHover={{ scale: 1.005 }}
-            transition={{ duration: 0.3 }}
-            className="relative overflow-hidden rounded-2xl border border-[var(--border-accent)] bg-gradient-to-r from-[var(--bg-card)] via-[var(--bg-card-2)] to-[var(--bg-card)]"
-          >
-            {/* Diagonal accent stripe */}
-            <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[var(--accent-lime)]/[0.05] to-transparent" />
-
-            <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-6 sm:p-8">
-              <div className="flex items-start sm:items-center gap-4 sm:gap-5">
-                <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--accent-lime)]/10 border border-[var(--accent-lime)]/20">
-                  <span className="text-2xl">🏅</span>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] font-600 tracking-[0.15em] uppercase text-[var(--accent-lime)] px-2 py-0.5 rounded-full bg-[var(--accent-lime)]/10">
-                      Événement majeur
-                    </span>
-                  </div>
-                  <h3 className="font-[var(--font-heading)] text-xl sm:text-2xl font-700 text-[var(--text-primary)]">
-                    Jeux Olympiques Juniors 2026
-                  </h3>
-                  <p className="text-sm text-[var(--text-secondary)] mt-1">
-                    Représentant officiel de la Ville de Vevey &middot; 29
-                    juillet – 8 août 2026
-                  </p>
-                </div>
-              </div>
-              <JOJCountdown className="flex-shrink-0" align="end" size="md" />
-            </div>
-          </motion.div>
-        </AnimatedSection>
+    <section className="relative overflow-hidden py-12 sm:py-16">
+      <div className="container-lk">
+        <motion.div
+          {...viewInProps}
+          variants={fadeUp}
+          className="grid gap-8 border-t border-border pt-10 md:grid-cols-[1fr_auto] md:items-end md:gap-12"
+        >
+          <div className="flex flex-col gap-5">
+            <span className="eyebrow flex items-center gap-2">
+              <MapPin size={12} strokeWidth={1.5} />
+              Événement majeur
+            </span>
+            <h2 className="font-display text-3xl font-400 leading-[1.05] tracking-tight text-bone sm:text-4xl md:text-5xl">
+              Jeux Olympiques de la Jeunesse&nbsp;— Hualien&nbsp;2026
+            </h2>
+            <p className="max-w-xl text-sm leading-relaxed text-pearl sm:text-base">
+              Lenart représente officiellement la Ville de Vevey du 29 juillet
+              au 8 août 2026 à Hualien, Taïwan.
+            </p>
+          </div>
+          <JOJCountdown align="end" size="md" />
+        </motion.div>
       </div>
     </section>
   );
