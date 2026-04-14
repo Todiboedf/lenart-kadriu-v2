@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Syne, Outfit } from "next/font/google";
 import "./globals.css";
+import StructuredData from "@/components/StructuredData";
 
 const syne = Syne({
   variable: "--font-heading",
@@ -16,27 +17,71 @@ const outfit = Outfit({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://lenartkadriu.com";
+
 export const metadata: Metadata = {
-  title: "Lenart Kadriu — Tennisman Suisse U14",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Lenart Kadriu — Tennisman Suisse U14 | JOJ Hualien 2026",
+    template: "%s | Lenart Kadriu",
+  },
   description:
-    "Lenart Kadriu — Jeune espoir suisse du tennis, U14, Team Vaud. Sélectionné aux Jeux Olympiques Juniors 2026 à Hualien, Taïwan.",
+    "Lenart Kadriu — Jeune espoir suisse du tennis, U14, Team Vaud. Qualifié aux Jeux Olympiques de la Jeunesse de Hualien, Taïwan, 29 juillet – 8 août 2026.",
   keywords: [
     "Lenart Kadriu",
     "tennis",
+    "tennis junior",
     "suisse",
     "U14",
     "Team Vaud",
-    "Jeux Olympiques Juniors 2026",
+    "Swiss Tennis",
+    "Swiss Olympique",
+    "Jeux Olympiques de la Jeunesse",
+    "JOJ 2026",
     "Hualien",
-    "Taiwan",
+    "Taïwan",
+    "Vevey",
+    "sponsoring tennis",
   ],
+  authors: [{ name: "GHaas Management SA", url: "https://www.ghaasmanagement.ch/" }],
+  creator: "GHaas Management SA",
+  publisher: "GHaas Management SA",
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Lenart Kadriu — Tennisman Suisse U14",
+    title: "Lenart Kadriu — Tennisman Suisse U14 | JOJ Hualien 2026",
     description:
-      "Jeune espoir suisse du tennis, U14, Team Vaud. Sélectionné aux Jeux Olympiques Juniors 2026.",
+      "Jeune espoir suisse du tennis, qualifié aux Jeux Olympiques de la Jeunesse de Hualien 2026. Découvrez son parcours et les partenariats sponsors.",
+    url: "/",
     type: "website",
     locale: "fr_CH",
+    siteName: "Lenart Kadriu",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lenart Kadriu — JOJ Hualien 2026",
+    description:
+      "Jeune espoir suisse du tennis · Qualifié aux Jeux Olympiques de la Jeunesse de Hualien 2026.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+      "max-snippet": -1,
+    },
+  },
+  category: "sports",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#050810",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -48,6 +93,7 @@ export default function RootLayout({
     <html lang="fr" className="dark">
       <body className={`${syne.variable} ${outfit.variable} antialiased`}>
         {children}
+        <StructuredData />
       </body>
     </html>
   );
