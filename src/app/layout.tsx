@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Syne, Outfit } from "next/font/google";
 import "./globals.css";
 import StructuredData from "@/components/StructuredData";
+import ClarityAnalytics from "@/components/ClarityAnalytics";
 
 const syne = Syne({
   variable: "--font-heading",
@@ -94,6 +95,7 @@ export default function RootLayout({
       <body className={`${syne.variable} ${outfit.variable} antialiased`}>
         {children}
         <StructuredData />
+        <ClarityAnalytics />
       </body>
     </html>
   );
