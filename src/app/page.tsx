@@ -1,46 +1,47 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import PlayerSection from "@/components/PlayerSection";
+import Hero from "@/components/Hero";
+import FactsSection from "@/components/FactsSection";
+import HualienSection from "@/components/HualienSection";
+import ProfileSection from "@/components/ProfileSection";
 import GameStyleSection from "@/components/GameStyleSection";
-import VideoSection from "@/components/VideoSection";
 import PalmaresSection from "@/components/PalmaresSection";
+import SeasonSection from "@/components/SeasonSection";
+import VideoSection from "@/components/VideoSection";
 import GallerySection from "@/components/GallerySection";
-import PassionSection from "@/components/PassionSection";
-import SponsorsSection from "@/components/SponsorsSection";
+import PartnersSection from "@/components/PartnersSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import { site } from "@/content/site";
+import { filmPoster } from "@/content/photos";
+import { partnersSection } from "@/content/partners";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
-        <HeroSection />
-        <PlayerSection />
+      <main id="contenu">
+        <Hero />
+        <FactsSection />
+        <HualienSection />
+        <ProfileSection />
         <GameStyleSection />
-        <VideoSection
-          label="Highlights"
-          title="Lenart"
-          titleAccent="En Action"
-          subtitle="Intensité, précision, victoires : les moments qui définissent un champion en devenir."
-          videoSrc="/assets/film-2026.mp4"
-          showPlayPause={true}
-        />
         <PalmaresSection />
+        <SeasonSection />
         <VideoSection
-          id="video2"
-          label="En Vidéo"
-          title="LENART"
-          titleAccent="EN ACTION"
-          subtitle="Puissance, précision, caractère : l'essence d'un champion."
-          videoSrc="/assets/film-2026.mp4"
-          showPlayPause={false}
+          id="video"
+          eyebrow={site.film.eyebrow}
+          title={site.film.title}
+          description={site.film.description}
+          src={site.film.src}
+          poster={filmPoster}
+          playLabel={site.film.playLabel}
         />
         <GallerySection />
-        <PassionSection />
-        <SponsorsSection />
+        <PartnersSection
+          id="partenaires"
+          eyebrow={partnersSection.eyebrow}
+          title={partnersSection.title}
+        />
         <CTASection />
       </main>
       <Footer />
