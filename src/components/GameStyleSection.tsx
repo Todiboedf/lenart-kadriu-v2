@@ -1,95 +1,50 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Zap, Brain, Target } from "lucide-react";
-import { fadeUp, staggerContainer, viewInProps } from "@/lib/motion";
-
-const qualities = [
-  {
-    icon: Zap,
-    title: "Offensif",
-    desc: "Initiative, intensité, pression constante sur l'adversaire.",
-  },
-  {
-    icon: Brain,
-    title: "Tactique",
-    desc: "Intelligence de jeu, lecture rapide des adversaires.",
-  },
-  {
-    icon: Target,
-    title: "Polyvalent",
-    desc: "Compétitif sur dur, terre battue et gazon.",
-  },
-];
+import { athlete } from "@/content/athlete";
+import { action, focusToPosition } from "@/content/photos";
+import { Container } from "./ui/Container";
+import { SectionHeader } from "./ui/SectionHeader";
 
 export default function GameStyleSection() {
+  const { gameStyle } = athlete;
+
   return (
-    <section id="jeu" className="relative border-t border-border py-24 sm:py-32">
-      <div className="container-lk grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-        <motion.div
-          {...viewInProps}
-          variants={fadeUp}
-          className="flex flex-col gap-8"
-        >
-          <div className="flex flex-col gap-4">
-            <span className="eyebrow">Style de jeu</span>
-            <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
-              Un jeu <em className="font-400 text-gold">offensif</em>
-            </h2>
+    <section id="jeu" className="section">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="flex flex-col gap-10 lg:col-span-7">
+            <SectionHeader eyebrow={gameStyle.eyebrow} title={gameStyle.title} />
+            <div className="flex max-w-2xl flex-col gap-4">
+              {gameStyle.paragraphs.map((paragraph) => (
+                <p key={paragraph} className="t-lead text-fg-muted">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            <ul className="divide-y divide-line border-y border-line">
+              {gameStyle.qualities.map((quality) => (
+                <li
+                  key={quality.title}
+                  className="grid gap-1 py-5 sm:grid-cols-[10rem_1fr] sm:gap-6"
+                >
+                  <h3 className="t-h3 text-fg">{quality.title}</h3>
+                  <p className="t-body text-fg-muted">{quality.description}</p>
+                </li>
+              ))}
+            </ul>
           </div>
-          <p className="text-base leading-relaxed text-pearl sm:text-lg">
-            Lenart possède un style de jeu résolument offensif, fondé sur une
-            intensité constante et une pression permanente. Il ne laisse aucun
-            répit à ses opposants, les poussant à la faute par son rythme
-            soutenu et son agressivité maîtrisée.
-          </p>
-          <p className="text-base leading-relaxed text-pearl sm:text-lg">
-            Sa force réside dans sa capacité à s&apos;adapter à toutes les
-            surfaces. Son intelligence tactique lui permet de s&apos;ajuster à
-            tout type d&apos;adversaire, et son calme dans les moments
-            décisifs fait de lui un compétiteur redoutable à son niveau.
-          </p>
 
-          <motion.ul
-            {...viewInProps}
-            variants={staggerContainer}
-            className="mt-4 flex flex-col divide-y divide-border"
-          >
-            {qualities.map(({ icon: Icon, title, desc }) => (
-              <motion.li
-                key={title}
-                variants={fadeUp}
-                className="flex items-start gap-5 py-5"
-              >
-                <Icon size={18} strokeWidth={1.3} className="mt-1 flex-shrink-0 text-gold" />
-                <div>
-                  <h3 className="font-display text-xl font-500 text-bone">
-                    {title}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-pearl">
-                    {desc}
-                  </p>
-                </div>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </motion.div>
-
-        <motion.div
-          {...viewInProps}
-          variants={fadeUp}
-          className="relative aspect-[4/5] overflow-hidden"
-        >
-          <Image
-            src="/assets/photo_4.jpg"
-            alt="Lenart Kadriu en match"
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </motion.div>
-      </div>
+          <figure className="relative aspect-[4/3] overflow-hidden bg-bg-elev lg:col-span-5 lg:aspect-[4/5]">
+            <Image
+              src={action.src}
+              alt={action.alt}
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover"
+              style={{ objectPosition: focusToPosition(action.focus) }}
+            />
+          </figure>
+        </div>
+      </Container>
     </section>
   );
 }

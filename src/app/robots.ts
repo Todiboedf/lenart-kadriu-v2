@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
+import { site } from "@/content/site";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://lenartkadriu.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,7 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,

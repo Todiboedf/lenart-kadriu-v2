@@ -1,10 +1,17 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { site } from "@/content/site";
 
 export const runtime = "nodejs";
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-export default function Icon() {
+export default async function Icon() {
+  const archivo = await readFile(
+    path.join(process.cwd(), "src/app/fonts/Archivo-700.ttf"),
+  );
+
   return new ImageResponse(
     (
       <div
@@ -14,20 +21,20 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0a0a0a",
-          color: "#f8f6f0",
-          fontSize: 20,
-          fontWeight: 500,
+          background: "#0B0B0C",
+          color: "#F3F2EE",
+          fontFamily: "Archivo",
+          fontWeight: 700,
+          fontSize: 17,
           letterSpacing: -1,
-          fontFamily: "serif",
-          fontStyle: "italic",
         }}
       >
-        <span style={{ display: "flex" }}>
-          L<span style={{ color: "#c9a84c", display: "flex" }}>K</span>
-        </span>
+        {site.monogram}
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+      fonts: [{ name: "Archivo", data: archivo, weight: 700, style: "normal" }],
+    },
   );
 }

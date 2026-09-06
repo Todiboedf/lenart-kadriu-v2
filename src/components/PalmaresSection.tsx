@@ -1,165 +1,77 @@
-"use client";
+import { palmares, type PalmaresEntry } from "@/content/palmares";
+import { Container } from "./ui/Container";
+import { SectionHeader } from "./ui/SectionHeader";
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { Trophy, Globe, Users } from "lucide-react";
-import { fadeUp, staggerContainer, viewInProps } from "@/lib/motion";
+const thClasses =
+  "py-3 pr-4 text-left text-[11px] font-medium uppercase tracking-[0.18em] text-fg-muted";
 
-type Category = {
-  icon: typeof Trophy;
-  label: string;
-  items: string[];
-};
+function resultLabel(entry: PalmaresEntry): string {
+  return entry.note ? `${entry.resultat}, ${entry.note}` : entry.resultat;
+}
 
-const categories: Category[] = [
-  {
-    icon: Trophy,
-    label: "Suisse",
-    items: [
-      "4× Champion Vaudois",
-      "Vainqueur TC Gland 2025 — Road to Montreux MS",
-      "Plusieurs victoires nationales",
-    ],
-  },
-  {
-    icon: Globe,
-    label: "Europe · Simple",
-    items: [
-      "Vainqueur Split, Croatie",
-      "Finaliste Tirana, Albanie",
-      "Finaliste Shkodra, Albanie",
-      "Finaliste Poreč, Croatie",
-      "3e Poreč, Croatie",
-      "4 victoires cat.1 Tournoi Europe France",
-    ],
-  },
-  {
-    icon: Users,
-    label: "Europe · Double",
-    items: [
-      "Finaliste Podgorica, Monténégro",
-      "3e Tirana, Albanie",
-      "Plusieurs victoires double Tournoi Europe France",
-    ],
-  },
-];
+function placeLabel(entry: PalmaresEntry): string {
+  return entry.lieu === entry.pays ? entry.pays : `${entry.lieu}, ${entry.pays}`;
+}
 
-const objectives = [
-  {
-    horizon: "2025 – 2026",
-    title: "Court terme",
-    desc: "Intégrer ITF Junior, renforcer la présence sur les tournois européens, développement physique et mental complet.",
-  },
-  {
-    horizon: "2027 – 2030",
-    title: "Moyen terme",
-    desc: "Devenir leader suisse de sa génération, représenter la Suisse dans les compétitions internationales majeures.",
-  },
-  {
-    horizon: "Long terme",
-    title: "Circuit ATP",
-    desc: "Intégrer le circuit professionnel avec un encadrement complet. Faire rayonner la Suisse sur la scène mondiale.",
-  },
-];
+function entryKey(entry: PalmaresEntry): string {
+  return [entry.annee ?? "", entry.competition, entry.lieu, entry.format, entry.resultat].join("|");
+}
 
 export default function PalmaresSection() {
   return (
-    <section id="palmares" className="relative border-t border-border py-24 sm:py-32">
-      <div className="container-lk">
-        <motion.div
-          {...viewInProps}
-          variants={fadeUp}
-          className="mb-14 flex flex-col gap-4"
-        >
-          <span className="eyebrow">Palmarès</span>
-          <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
-            Les résultats qui tracent la <em className="font-400 text-gold">trajectoire</em>
-          </h2>
-        </motion.div>
+    <section id="palmares" className="section">
+      <Container>
+        <SectionHeader eyebrow={palmares.eyebrow} title={palmares.title} />
 
-        <motion.div
-          {...viewInProps}
-          variants={fadeUp}
-          className="relative mb-16 aspect-[21/9] overflow-hidden"
-        >
-          <Image
-            src="/assets/photo_trophy.jpg"
-            alt="TC Gland 2025 — Vainqueur"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-          <figcaption className="absolute bottom-0 left-0 right-0 flex flex-col gap-1 p-6 sm:p-10">
-            <span className="eyebrow">Victoire</span>
-            <p className="font-display text-2xl font-400 text-bone sm:text-3xl">
-              TC Gland 2025 — Vainqueur Road to Montreux
-            </p>
-          </figcaption>
-        </motion.div>
+        <table className="mt-12 hidden w-full border-collapse text-left md:table">
+          <thead>
+            <tr className="border-b border-line-strong">
+              <th scope="col" className={`${thClasses} w-20`}>Année</th>
+              <th scope="col" className={thClasses}>Compétition</th>
+              <th scope="col" className={`${thClasses} w-52`}>Lieu</th>
+              <th scope="col" className={`${thClasses} w-24`}>Format</th>
+              <th scope="col" className={`${thClasses} w-72 pr-0`}>Résultat</th>
+            </tr>
+          </thead>
+          <tbody>
+            {palmares.entries.map((entry) => (
+              <tr key={entryKey(entry)} className="border-b border-line align-top">
+                <td className="t-num py-4 pr-4 text-base text-fg-muted">
+                  {entry.annee ?? ""}
+                </td>
+                <td className="t-body py-4 pr-4 text-fg">{entry.competition}</td>
+                <td className="t-body py-4 pr-4 text-fg-muted">
+                  {placeLabel(entry)}
+                </td>
+                <td className="t-body py-4 pr-4 text-fg-muted">{entry.format}</td>
+                <td className="t-body py-4 font-medium text-fg">
+                  {resultLabel(entry)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-        <motion.div
-          {...viewInProps}
-          variants={staggerContainer}
-          className="grid gap-10 md:grid-cols-3"
-        >
-          {categories.map(({ icon: Icon, label, items }) => (
-            <motion.article
-              key={label}
-              variants={fadeUp}
-              className="flex flex-col gap-5 border-t border-border pt-8"
-            >
-              <div className="flex items-center gap-3">
-                <Icon size={18} strokeWidth={1.3} className="text-gold" />
-                <h3 className="eyebrow">{label}</h3>
-              </div>
-              <ul className="flex flex-col divide-y divide-border">
-                {items.map((item, j) => (
-                  <li
-                    key={j}
-                    className="py-3.5 text-sm leading-relaxed text-bone/90"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.article>
+        <ul className="mt-10 divide-y divide-line border-y border-line md:hidden">
+          {palmares.entries.map((entry) => (
+            <li key={entryKey(entry)} className="flex flex-col gap-1 py-4">
+              <p className="t-body text-fg">
+                <span className="font-medium">{entry.competition}</span>
+                <span className="text-fg-muted">
+                  {", "}
+                  {placeLabel(entry)}
+                </span>
+              </p>
+              <p className="t-small text-fg-muted">
+                <span className="text-fg">{resultLabel(entry)}</span>
+                {" · "}
+                {entry.format}
+                {entry.annee ? ` · ${entry.annee}` : ""}
+              </p>
+            </li>
           ))}
-        </motion.div>
-
-        <motion.div
-          {...viewInProps}
-          variants={fadeUp}
-          className="mt-24 flex flex-col gap-4"
-        >
-          <span className="eyebrow">Horizon</span>
-          <h3 className="font-display text-3xl font-400 leading-[1.1] tracking-tight text-bone sm:text-4xl">
-            Objectifs à court, moyen et long terme
-          </h3>
-        </motion.div>
-
-        <motion.div
-          {...viewInProps}
-          variants={staggerContainer}
-          className="mt-10 grid gap-10 md:grid-cols-3"
-        >
-          {objectives.map((obj) => (
-            <motion.article
-              key={obj.horizon}
-              variants={fadeUp}
-              className="flex flex-col gap-3 border-t border-border pt-8"
-            >
-              <span className="text-xs tracking-[0.2em] uppercase text-gold">
-                {obj.horizon}
-              </span>
-              <h4 className="font-display text-2xl font-400 text-bone">
-                {obj.title}
-              </h4>
-              <p className="text-sm leading-relaxed text-pearl">{obj.desc}</p>
-            </motion.article>
-          ))}
-        </motion.div>
-      </div>
+        </ul>
+      </Container>
     </section>
   );
 }

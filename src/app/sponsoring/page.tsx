@@ -1,21 +1,50 @@
 import type { Metadata } from "next";
-import SponsoringPageContent from "@/components/SponsoringPageContent";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import PartnersSection from "@/components/PartnersSection";
+import SponsoringHero from "@/components/sponsoring/SponsoringHero";
+import WhySection from "@/components/sponsoring/WhySection";
+import OffersSection from "@/components/sponsoring/OffersSection";
+import SupportsSection from "@/components/sponsoring/SupportsSection";
+import ContactSection from "@/components/sponsoring/ContactSection";
+import { sponsoring } from "@/content/sponsoring";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Sponsoring — Lenart Kadriu | JOJ Hualien 2026",
-  description:
-    "Devenez partenaire de Lenart Kadriu, jeune espoir suisse du tennis qualifié aux Jeux Olympiques de la Jeunesse de Hualien 2026. Packages Bronze, Silver et Gold.",
+  title: { absolute: sponsoring.meta.title },
+  description: sponsoring.meta.description,
   alternates: { canonical: "/sponsoring" },
   openGraph: {
-    title: "Sponsoring — Lenart Kadriu | JOJ Hualien 2026",
-    description:
-      "Devenez partenaire d'un futur champion suisse du tennis qualifié aux JOJ Hualien 2026. Packages Bronze, Silver et Gold.",
+    title: sponsoring.meta.title,
+    description: sponsoring.meta.description,
     url: "/sponsoring",
     type: "website",
-    locale: "fr_CH",
+    locale: site.locale,
+    siteName: site.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: sponsoring.meta.title,
+    description: sponsoring.meta.description,
   },
 };
 
 export default function SponsoringPage() {
-  return <SponsoringPageContent />;
+  return (
+    <>
+      <Navbar />
+      <main id="contenu">
+        <SponsoringHero />
+        <WhySection />
+        <OffersSection />
+        <SupportsSection />
+        <PartnersSection
+          eyebrow={sponsoring.partners.eyebrow}
+          title={sponsoring.partners.title}
+        />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
+  );
 }

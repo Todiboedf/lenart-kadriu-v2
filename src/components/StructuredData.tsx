@@ -1,21 +1,23 @@
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://lenartkadriu.com";
+import { site } from "@/content/site";
+import { hualien } from "@/content/hualien";
+import { portrait } from "@/content/photos";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
 
 const person = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": `${SITE_URL}/#person`,
-  name: "Lenart Kadriu",
+  "@id": `${siteUrl}/#person`,
+  name: site.name,
   givenName: "Lenart",
   familyName: "Kadriu",
   gender: "Male",
-  birthDate: "2012-01-16",
   birthPlace: {
     "@type": "Place",
-    name: "Vevey",
+    name: site.birthPlace,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Vevey",
+      addressLocality: site.birthPlace,
       addressRegion: "Vaud",
       addressCountry: "CH",
     },
@@ -24,10 +26,10 @@ const person = {
     "@type": "Country",
     name: "Switzerland",
   },
-  jobTitle: "Tennisman",
+  jobTitle: "Joueur de tennis",
   knowsAbout: "Tennis",
-  url: SITE_URL,
-  image: `${SITE_URL}/assets/photo_identite.jpg`,
+  url: siteUrl,
+  image: `${siteUrl}${portrait.src}`,
   memberOf: [
     {
       "@type": "SportsTeam",
@@ -41,43 +43,42 @@ const person = {
     },
     {
       "@type": "SportsOrganization",
-      name: "Swiss Olympique",
+      name: "Swiss Olympic",
       url: "https://www.swissolympic.ch/",
     },
   ],
   affiliation: {
     "@type": "SportsOrganization",
-    name: "Tennis Nestlé Club de Mont-Pèlerin",
+    name: site.club,
   },
 };
 
 const sportsEvent = {
   "@context": "https://schema.org",
   "@type": "SportsEvent",
-  "@id": `${SITE_URL}/#joj-hualien-2026`,
-  name: "Jeux Olympiques de la Jeunesse — Hualien 2026",
-  alternateName: "Youth Olympic Games Hualien 2026",
-  startDate: "2026-07-29",
-  endDate: "2026-08-08",
+  "@id": `${siteUrl}/#icg-hualien-2026`,
+  name: "International Children's Games Hualien 2026",
+  startDate: hualien.startDate,
+  endDate: hualien.endDate,
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   sport: "Tennis",
   location: {
     "@type": "Place",
-    name: "Hualien",
+    name: hualien.location.city,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Hualien",
-      addressCountry: "TW",
+      addressLocality: hualien.location.city,
+      addressCountry: hualien.location.countryCode,
     },
   },
   organizer: {
     "@type": "Organization",
-    name: "International Olympic Committee",
-    url: "https://olympics.com/",
+    name: hualien.organizer.name,
+    url: hualien.organizer.url,
   },
   competitor: {
-    "@id": `${SITE_URL}/#person`,
+    "@id": `${siteUrl}/#person`,
   },
 };
 
@@ -86,12 +87,10 @@ export default function StructuredData() {
     <>
       <script
         type="application/ld+json"
-        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
       />
       <script
         type="application/ld+json"
-        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(sportsEvent) }}
       />
     </>

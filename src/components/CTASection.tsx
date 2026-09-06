@@ -1,66 +1,59 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Mail, Phone } from "lucide-react";
-import { fadeUp, viewInProps } from "@/lib/motion";
-import { PremiumButton } from "./ui/PremiumButton";
-import { GoldDivider } from "./ui/GoldDivider";
+import { sponsoring } from "@/content/sponsoring";
+import { site } from "@/content/site";
+import { mailto } from "@/lib/mailto";
+import { Container } from "./ui/Container";
+import { SectionHeader } from "./ui/SectionHeader";
+import { Button } from "./ui/Button";
 
 export default function CTASection() {
+  const { cta } = sponsoring;
+
   return (
-    <section className="relative border-t border-border py-24 sm:py-32">
-      <div className="container-lk max-w-4xl text-center">
-        <motion.div {...viewInProps} variants={fadeUp} className="flex flex-col items-center gap-6">
-          <span className="eyebrow">Devenir partenaire</span>
-          <h2 className="font-display text-4xl font-400 leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-6xl">
-            Soutenez un <em className="font-400 text-gold">futur champion</em>
-          </h2>
-          <GoldDivider width="md" />
-          <p className="max-w-2xl text-base leading-relaxed text-pearl sm:text-lg">
-            Associez votre marque à un parcours d&apos;athlète qualifié aux Jeux
-            Olympiques de la Jeunesse. Visibilité sur les tournois nationaux,
-            européens et à Hualien 2026. Conditions détaillées sur la page
-            sponsoring.
-          </p>
-        </motion.div>
-
-        <motion.div
-          {...viewInProps}
-          variants={fadeUp}
-          className="mt-14 flex flex-col items-center gap-8"
-        >
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
-            <a
-              href="mailto:ghaasmanagement@gmail.com"
-              className="flex items-center gap-2.5 text-sm text-pearl transition-colors hover:text-gold"
-            >
-              <Mail size={14} strokeWidth={1.4} />
-              ghaasmanagement@gmail.com
-            </a>
-            <span className="hidden h-1 w-1 rounded-full bg-pearl/40 sm:block" />
-            <a
-              href="tel:+41795667410"
-              className="flex items-center gap-2.5 text-sm text-pearl transition-colors hover:text-gold"
-            >
-              <Phone size={14} strokeWidth={1.4} />
-              +41 79 566 74 10
-            </a>
+    <section className="section">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="flex flex-col gap-6 lg:col-span-7">
+            <SectionHeader eyebrow={cta.eyebrow} title={cta.title} />
+            <div className="flex max-w-2xl flex-col gap-4">
+              {cta.lines.map((line) => (
+                <p key={line} className="t-lead text-fg-muted">
+                  {line}
+                </p>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-col items-center gap-4 sm:flex-row">
-            <PremiumButton href="/sponsoring" variant="primary" size="md" withArrow>
-              Dossier sponsors
-            </PremiumButton>
-            <PremiumButton
-              href="mailto:ghaasmanagement@gmail.com?subject=Partenariat%20Lenart%20Kadriu%20%E2%80%94%20JOJ%20Hualien%202026"
-              variant="secondary"
-              size="md"
-            >
-              Nous contacter
-            </PremiumButton>
+          <div className="flex flex-col justify-end gap-8 lg:col-span-5">
+            <ul className="t-body flex flex-col gap-3">
+              <li>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="inline-flex items-center gap-3 text-fg transition-colors hover:text-fg-muted"
+                >
+                  <Mail size={18} strokeWidth={1.5} aria-hidden="true" />
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.phoneHref}
+                  className="inline-flex items-center gap-3 text-fg transition-colors hover:text-fg-muted"
+                >
+                  <Phone size={18} strokeWidth={1.5} aria-hidden="true" />
+                  {site.phone}
+                </a>
+              </li>
+            </ul>
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+              <Button href={cta.primaryCta.href}>{cta.primaryCta.label}</Button>
+              <Button href={mailto(cta.secondaryCta.subject)} variant="secondary">
+                {cta.secondaryCta.label}
+              </Button>
+            </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </Container>
     </section>
   );
 }
