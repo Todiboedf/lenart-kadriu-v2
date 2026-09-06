@@ -25,7 +25,7 @@ export default function Home() {
           title="Lenart"
           titleAccent="En Action"
           subtitle="Intensité, précision, victoires : les moments qui définissent un champion en devenir."
-          videoSrc="/assets/video_lenart.mp4"
+          videoSrc="/assets/film-2026.mp4"
           showPlayPause={true}
         />
         <PalmaresSection />
@@ -35,7 +35,7 @@ export default function Home() {
           title="LENART"
           titleAccent="EN ACTION"
           subtitle="Puissance, précision, caractère : l'essence d'un champion."
-          videoSrc="/assets/lenart_kadriu_web.mp4"
+          videoSrc="/assets/film-2026.mp4"
           showPlayPause={false}
         />
         <GallerySection />

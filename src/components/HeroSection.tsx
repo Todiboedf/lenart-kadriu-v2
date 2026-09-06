@@ -22,7 +22,7 @@ export default function HeroSection() {
     >
       <motion.div style={{ y }} className="absolute inset-0 -z-10">
         <Image
-          src="/assets/photo_9.jpg"
+          src="/assets/trophee-realsport.jpg"
           alt="Lenart Kadriu en action"
           fill
           priority

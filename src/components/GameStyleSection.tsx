@@ -82,7 +82,7 @@ export default function GameStyleSection() {
           className="relative aspect-[4/5] overflow-hidden"
         >
           <Image
-            src="/assets/photo_4.jpg"
+            src="/assets/action-gradignan.jpg"
             alt="Lenart Kadriu en match"
             fill
             className="object-cover"

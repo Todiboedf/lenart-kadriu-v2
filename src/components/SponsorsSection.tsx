@@ -83,7 +83,7 @@ export default function SponsorsSection() {
             className="relative aspect-[16/9] overflow-hidden"
           >
             <Image
-              src="/assets/photo_olympique.jpg"
+              src="/assets/remise-prix-vaud.jpg"
               alt="Carte Swiss Olympic"
               fill
               className="object-cover"

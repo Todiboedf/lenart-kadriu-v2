@@ -143,7 +143,7 @@ function SponsoringHero() {
     <section className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-28">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/assets/photo_6.jpg"
+          src="/assets/portrait-head.jpg"
           alt=""
           fill
           priority

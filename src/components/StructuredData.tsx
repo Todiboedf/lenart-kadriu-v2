@@ -27,7 +27,7 @@ const person = {
   jobTitle: "Tennisman",
   knowsAbout: "Tennis",
   url: SITE_URL,
-  image: `${SITE_URL}/assets/photo_identite.jpg`,
+  image: `${SITE_URL}/assets/portrait-head.jpg`,
   memberOf: [
     {
       "@type": "SportsTeam",

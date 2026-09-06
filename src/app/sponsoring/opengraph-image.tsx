@@ -10,7 +10,7 @@ export const contentType = "image/png";
 
 export default async function OpengraphImage() {
   const imgBuffer = fs.readFileSync(
-    path.join(process.cwd(), "public/assets/photo_8.jpg"),
+    path.join(process.cwd(), "public/assets/istarska-riviera.jpg"),
   );
   const imgSrc = `data:image/jpeg;base64,${imgBuffer.toString("base64")}`;
 

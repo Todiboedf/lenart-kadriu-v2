@@ -83,7 +83,7 @@ export default function PalmaresSection() {
           className="relative mb-16 aspect-[21/9] overflow-hidden"
         >
           <Image
-            src="/assets/photo_trophy.jpg"
+            src="/assets/trophee-realsport.jpg"
             alt="TC Gland 2025 : Vainqueur"
             fill
             className="object-cover"

@@ -42,7 +42,7 @@ export default function PlayerSection() {
           >
             <div className="relative aspect-[3/4] overflow-hidden">
               <Image
-                src="/assets/photo_identite.jpg"
+                src="/assets/portrait-head.jpg"
                 alt="Lenart Kadriu : Tennisman Suisse U14"
                 fill
                 className="object-cover"
@@ -51,7 +51,7 @@ export default function PlayerSection() {
             </div>
             <div className="relative aspect-[16/10] overflow-hidden">
               <Image
-                src="/assets/photo_vaud.jpg"
+                src="/assets/remise-prix-vaud.jpg"
                 alt="Team Vaud"
                 fill
                 className="object-cover"

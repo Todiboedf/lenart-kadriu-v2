@@ -27,7 +27,7 @@ export default function PassionSection() {
             className="relative aspect-[4/5] overflow-hidden"
           >
             <Image
-              src="/assets/photo_1.jpg"
+              src="/assets/debuts-4-ans.jpg"
               alt="Lenart Kadriu : Les premiers pas dans le tennis"
               fill
               className="object-cover"
