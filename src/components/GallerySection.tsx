@@ -7,23 +7,23 @@ import { fadeUp, staggerContainer, viewInProps } from "@/lib/motion";
 const photos = [
   {
     src: "/assets/photo_hju.jpg",
-    alt: "Victoire — index levé, trophée en main",
+    alt: "Victoire : index levé, trophée en main",
     span: "row-span-2",
   },
   { src: "/assets/photo_5.jpg", alt: "En tournoi" },
   {
     src: "/assets/photo_3.jpg",
-    alt: "Remise de prix Vaud — partenariat HEAD",
+    alt: "Remise de prix Vaud : partenariat HEAD",
   },
   { src: "/assets/photo_trophe.jpg", alt: "Trophée RealSport" },
   {
     src: "/assets/photo_10.jpg",
-    alt: "Victoire indoor — coupe en mains",
+    alt: "Victoire indoor : coupe en mains",
   },
   { src: "/assets/photo_de.jpg", alt: "Portrait" },
   {
     src: "/assets/photo_2.jpg",
-    alt: "Tennis Europe — tournoi en Croatie",
+    alt: "Tennis Europe : tournoi en Croatie",
   },
 ];
 

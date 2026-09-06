@@ -27,7 +27,7 @@ const sponsors = [
   },
 ];
 
-const affiliations = ["Team Vaud", "Swiss Tennis", "Swiss Olympique"];
+const affiliations = ["Team Vaud", "Swiss Tennis", "Swiss Olympic"];
 
 export default function SponsorsSection() {
   return (
@@ -84,7 +84,7 @@ export default function SponsorsSection() {
           >
             <Image
               src="/assets/photo_olympique.jpg"
-              alt="Carte Swiss Olympique"
+              alt="Carte Swiss Olympic"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -102,7 +102,7 @@ export default function SponsorsSection() {
             </h3>
             <p className="text-base leading-relaxed text-pearl sm:text-lg">
               Lenart est membre du Team Vaud, cadre vaudois et suprarégional de
-              Swiss Tennis, et affilié à Swiss Olympique. Ces structures lui
+              Swiss Tennis, et affilié à Swiss Olympic. Ces structures lui
               assurent un encadrement de haut niveau et lui ouvrent les portes
               des compétitions nationales et internationales les plus
               prestigieuses.

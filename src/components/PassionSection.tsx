@@ -28,7 +28,7 @@ export default function PassionSection() {
           >
             <Image
               src="/assets/photo_1.jpg"
-              alt="Lenart Kadriu — Les premiers pas dans le tennis"
+              alt="Lenart Kadriu : Les premiers pas dans le tennis"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -44,7 +44,7 @@ export default function PassionSection() {
             <blockquote className="font-display text-2xl font-300 italic leading-[1.35] text-bone sm:text-3xl">
               « Depuis l&apos;âge de 4 ans, Lenart est animé par une véritable
               passion pour le tennis. Chaque jour, il travaille avec rigueur et
-              dévouement pour perfectionner son jeu — avec un seul objectif :
+              dévouement pour perfectionner son jeu : avec un seul objectif :
               devenir le meilleur. »
             </blockquote>
             <p className="text-sm tracking-[0.2em] uppercase text-pearl/80">

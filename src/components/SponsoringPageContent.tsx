@@ -22,7 +22,6 @@ import {
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import JOJCountdown from "./JOJCountdown";
 import { PremiumButton } from "./ui/PremiumButton";
 import { GoldDivider } from "./ui/GoldDivider";
 import { fadeUp, staggerContainer, viewInProps } from "@/lib/motion";
@@ -33,7 +32,7 @@ const whyCards = [
   {
     icon: Medal,
     title: "Qualifié aux JOJ 2026",
-    desc: "Hualien, Taïwan · 29 juillet – 8 août 2026. Représentant officiel de la Ville de Vevey aux Jeux Olympiques de la Jeunesse.",
+    desc: "Hualien, Taïwan · 29 juillet au 8 août 2026. Représentant officiel de la Ville de Vevey aux Jeux Olympiques de la Jeunesse.",
   },
   {
     icon: Trophy,
@@ -48,7 +47,7 @@ const whyCards = [
   {
     icon: ShieldCheck,
     title: "Encadrement officiel",
-    desc: "Membre du Team Vaud, cadre vaudois et suprarégional de Swiss Tennis, affilié à Swiss Olympique. Équipementier HEAD.",
+    desc: "Membre du Team Vaud, cadre vaudois et suprarégional de Swiss Tennis, affilié à Swiss Olympic. Équipementier HEAD.",
   },
 ];
 
@@ -85,7 +84,7 @@ const packages = [
     highlight: false,
     includes: [
       "Inclut l'ensemble du pack Silver",
-      "Logo sur tenue de match — haute visibilité",
+      "Logo sur tenue de match : haute visibilité",
       "1 événement partenaire annuel (meet & greet / clinic)",
       "Reporting KPI trimestriel (portée, presse, audience)",
       "Présence sur le dossier JOJ officiel + communiqués",
@@ -112,7 +111,7 @@ const kpis = [
   {
     icon: BarChart3,
     label: "Audience Swiss Tennis",
-    hint: "Écosystème officiel Swiss Tennis + Swiss Olympique",
+    hint: "Écosystème officiel Swiss Tennis + Swiss Olympic",
   },
 ];
 
@@ -137,7 +136,7 @@ const trustedBy = [
   },
 ];
 
-const affiliations = ["Team Vaud", "Swiss Tennis", "Swiss Olympique"];
+const affiliations = ["Team Vaud", "Swiss Tennis", "Swiss Olympic"];
 
 function SponsoringHero() {
   return (
@@ -186,14 +185,6 @@ function SponsoringHero() {
           Hualien. La fenêtre pour s&apos;associer à son parcours se ferme
           avec la cérémonie d&apos;ouverture.
         </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.9 }}
-        >
-          <JOJCountdown align="start" size="lg" />
-        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -281,7 +272,7 @@ function Packages() {
           className="mb-14 max-w-2xl text-sm text-pearl"
         >
           Les montants ci-dessous sont{" "}
-          <span className="text-bone">indicatifs — à confirmer</span> avec
+          <span className="text-bone">indicatifs : à confirmer</span> avec
           Guillaume Haas. Chaque partenariat est construit sur-mesure autour de
           la saison et de la qualification JOJ.
         </motion.p>
@@ -320,7 +311,7 @@ function Packages() {
                   <span className="text-sm text-pearl">CHF / an</span>
                 </div>
                 <span className="text-[10px] tracking-[0.22em] uppercase text-pearl/60">
-                  Indicatif — à confirmer
+                  Indicatif : à confirmer
                 </span>
               </div>
               <ul className="flex flex-col gap-3">

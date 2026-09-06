@@ -1,11 +1,9 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   LENART KADRIU — DESIGN TOKENS
+   LENART KADRIU : DESIGN TOKENS
    Palette stricte (accent or < 5 % surface), direction artistique
    hôtelière de prestige alignée sur HL Conciergerie. Serif display
    (Cormorant) + sans (Outfit), animations retenues, zéro emoji.

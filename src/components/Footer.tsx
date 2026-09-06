@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-xs text-pearl/60 sm:flex-row sm:items-center sm:justify-between">
-          <span>© {year} Lenart Kadriu — Tous droits réservés.</span>
+          <span>© {year} Lenart Kadriu : Tous droits réservés.</span>
           <span className="tracking-[0.18em] uppercase">Vevey · Suisse</span>
         </div>
       </div>

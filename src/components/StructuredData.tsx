@@ -41,7 +41,7 @@ const person = {
     },
     {
       "@type": "SportsOrganization",
-      name: "Swiss Olympique",
+      name: "Swiss Olympic",
       url: "https://www.swissolympic.ch/",
     },
   ],
@@ -55,7 +55,7 @@ const sportsEvent = {
   "@context": "https://schema.org",
   "@type": "SportsEvent",
   "@id": `${SITE_URL}/#joj-hualien-2026`,
-  name: "Jeux Olympiques de la Jeunesse — Hualien 2026",
+  name: "Jeux Olympiques de la Jeunesse : Hualien 2026",
   alternateName: "Youth Olympic Games Hualien 2026",
   startDate: "2026-07-29",
   endDate: "2026-08-08",

@@ -17,7 +17,7 @@ const categories: Category[] = [
     label: "Suisse",
     items: [
       "4× Champion Vaudois",
-      "Vainqueur TC Gland 2025 — Road to Montreux MS",
+      "Vainqueur TC Gland 2025 : Road to Montreux MS",
       "Plusieurs victoires nationales",
     ],
   },
@@ -46,12 +46,12 @@ const categories: Category[] = [
 
 const objectives = [
   {
-    horizon: "2025 – 2026",
+    horizon: "2025 au 2026",
     title: "Court terme",
     desc: "Intégrer ITF Junior, renforcer la présence sur les tournois européens, développement physique et mental complet.",
   },
   {
-    horizon: "2027 – 2030",
+    horizon: "2027 au 2030",
     title: "Moyen terme",
     desc: "Devenir leader suisse de sa génération, représenter la Suisse dans les compétitions internationales majeures.",
   },
@@ -84,7 +84,7 @@ export default function PalmaresSection() {
         >
           <Image
             src="/assets/photo_trophy.jpg"
-            alt="TC Gland 2025 — Vainqueur"
+            alt="TC Gland 2025 : Vainqueur"
             fill
             className="object-cover"
             sizes="100vw"
@@ -93,7 +93,7 @@ export default function PalmaresSection() {
           <figcaption className="absolute bottom-0 left-0 right-0 flex flex-col gap-1 p-6 sm:p-10">
             <span className="eyebrow">Victoire</span>
             <p className="font-display text-2xl font-400 text-bone sm:text-3xl">
-              TC Gland 2025 — Vainqueur Road to Montreux
+              TC Gland 2025 : Vainqueur Road to Montreux
             </p>
           </figcaption>
         </motion.div>

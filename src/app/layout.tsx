@@ -25,11 +25,11 @@ const siteUrl =
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Lenart Kadriu — Tennisman Suisse U14 | JOJ Hualien 2026",
+    default: "Lenart Kadriu : Tennisman Suisse U14 | JOJ Hualien 2026",
     template: "%s | Lenart Kadriu",
   },
   description:
-    "Lenart Kadriu, jeune espoir suisse du tennis, qualifié aux Jeux Olympiques de la Jeunesse de Hualien, Taïwan, 29 juillet – 8 août 2026.",
+    "Lenart Kadriu, jeune espoir suisse du tennis, qualifié aux Jeux Olympiques de la Jeunesse de Hualien, Taïwan, 29 juillet au 8 août 2026.",
   keywords: [
     "Lenart Kadriu",
     "tennis",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     "U14",
     "Team Vaud",
     "Swiss Tennis",
-    "Swiss Olympique",
+    "Swiss Olympic",
     "Jeux Olympiques de la Jeunesse",
     "JOJ 2026",
     "Hualien",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   publisher: "GHaas Management SA",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Lenart Kadriu — Tennisman Suisse U14 | JOJ Hualien 2026",
+    title: "Lenart Kadriu : Tennisman Suisse U14 | JOJ Hualien 2026",
     description:
       "Jeune espoir suisse du tennis, qualifié aux Jeux Olympiques de la Jeunesse de Hualien 2026. Parcours et partenariats sponsors.",
     url: "/",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lenart Kadriu — JOJ Hualien 2026",
+    title: "Lenart Kadriu : JOJ Hualien 2026",
     description:
       "Jeune espoir suisse du tennis qualifié aux Jeux Olympiques de la Jeunesse de Hualien 2026.",
   },

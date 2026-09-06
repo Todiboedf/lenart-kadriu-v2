@@ -4,7 +4,7 @@ import path from "node:path";
 
 export const runtime = "nodejs";
 export const alt =
-  "Lenart Kadriu — Tennisman Suisse U14 · JOJ Hualien 2026";
+  "Lenart Kadriu : Tennisman Suisse U14 · JOJ Hualien 2026";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -146,7 +146,7 @@ export default async function OpengraphImage() {
               lenartkadriu.com
             </span>
             <span style={{ display: "flex" }}>
-              29 juillet – 8 août 2026 · Taïwan
+              29 juillet au 8 août 2026 · Taïwan
             </span>
           </div>
         </div>
