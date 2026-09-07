@@ -26,9 +26,9 @@ export const sponsoring = {
     title: "Quatre raisons de s’engager",
     arguments: [
       {
-        title: "Argent en simple et bronze en double aux ICG Hualien 2026",
+        title: "Champion suisse d’été 2026 en double, argent en simple aux ICG Hualien 2026",
         description:
-          "Sélectionné par la Ville de Vevey pour les International Children’s Games, 58e édition, du 1er au 6 août 2026.",
+          "Titre national en double aux Championnats suisses d’été 2026. Sélectionné par la Ville de Vevey pour les International Children’s Games, 58e édition, du 1er au 6 août 2026 : argent en simple, bronze en double.",
       },
       {
         title: "Un palmarès Tennis Europe",

@@ -14,6 +14,8 @@ export const site = {
   categorie: "U14",
   saison: "2026",
   categorieSaison: "U14, saison 2026",
+  // Classement Swiss Tennis, source : coach de Lenart, message du 6 septembre 2026.
+  classement: "R1 (dès octobre 2026)",
   // TODO(Guillaume) : intitulé exact du club à confirmer, affiché tel quel.
   club: "Tennis Club Nestlé, Mont-Pèlerin",
   birthYear: 2012,
@@ -55,7 +57,8 @@ export const site = {
   hero: {
     loopMp4: "/assets/hero-loop.mp4",
     loopWebm: "/assets/hero-loop.webm",
-    subtitle: "Médaille d’argent en simple, International Children’s Games Hualien 2026",
+    subtitle:
+      "Champion suisse d’été 2026 en double, médaille d’argent en simple aux ICG Hualien 2026",
     primaryCta: { label: "Devenir partenaire", href: "/sponsoring" },
     secondaryCta: { label: "Voir le parcours", href: "#profil" },
   },

@@ -22,6 +22,16 @@ export const palmares = {
   title: "Palmarès",
   entries: [
     {
+      // Source : coach de Lenart, message du 6 septembre 2026.
+      annee: 2026,
+      competition: "Championnats suisses d’été",
+      lieu: "Suisse",
+      pays: "Suisse",
+      resultat: "Champion suisse",
+      format: "Double",
+      niveau: "Suisse",
+    },
+    {
       annee: 2026,
       competition: "International Children’s Games",
       lieu: "Hualien",
