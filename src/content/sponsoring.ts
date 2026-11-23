@@ -16,7 +16,7 @@ export const sponsoring = {
     eyebrow: "Sponsoring",
     title: "Devenez partenaire de Lenart Kadriu",
     paragraph:
-      "Lenart Kadriu, 14 ans, est membre du Team Vaud, cadre de Swiss Tennis et titulaire de la carte Talent régional de Swiss Olympic. Aux International Children’s Games de Hualien 2026, avec la délégation de la Ville de Vevey, il a remporté l’argent en simple et le bronze en double. La saison 2026-2027 marque son passage en U16.",
+      "Lenart Kadriu, 14 ans, est membre du Team Vaud et du cadre Espoirs de Swiss Tennis, et titulaire de la carte Talent régional de Swiss Olympic. Aux International Children’s Games de Hualien 2026, avec la délégation de la Ville de Vevey, il a remporté l’argent en simple et le bronze en double. La saison 2026-2027 marque son passage en U16.",
     primaryCta: { label: "Recevoir le dossier", subject: "Dossier sponsors Lenart Kadriu" },
     secondaryCta: { label: "Voir les offres", href: "#offres" },
   },
@@ -38,7 +38,7 @@ export const sponsoring = {
       {
         title: "Un encadrement officiel",
         description:
-          "Membre du Team Vaud, cadre vaudois et suprarégional de Swiss Tennis, titulaire de la carte Talent régional de Swiss Olympic.",
+          "Membre du Team Vaud et du cadre Espoirs de Swiss Tennis, titulaire de la carte Talent régional de Swiss Olympic.",
       },
       {
         title: "Un équipementier de référence",
