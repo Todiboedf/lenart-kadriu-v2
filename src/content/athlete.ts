@@ -7,22 +7,22 @@ export type Objective = { horizon: string; title: string; description: string };
 export const athlete = {
   /** Bande de faits sous le hero. */
   facts: [
-    { value: "2012", label: "Né à Vevey" },
-    { value: "Team Vaud", label: "Swiss Tennis" },
+    { value: "Cadre Espoirs", label: "Swiss Tennis" },
     { value: "Champion suisse 2026", label: "Double" },
     { value: "Argent en simple", label: "ICG Hualien 2026" },
+    { value: "Team Vaud", label: "Cadre vaudois" },
   ] satisfies Fact[],
 
   /** Bande de faits locale de la section Profil. */
   profileFacts: [
     { value: String(site.birthYear), label: site.birthPlace },
-    { value: site.categorie, label: `Saison ${site.saison}` },
+    { value: "Talent régional", label: "Carte Swiss Olympic" },
     { value: site.classement, label: "Classement Swiss Tennis" },
   ] satisfies Fact[],
 
   bio: [
-    "Lenart Kadriu est né en 2012 à Vevey. Raquette en main à 4 ans, il joue en U14 pour la saison 2026 et passe en U16 en 2027.",
-    "Classé R1 dès octobre 2026, proche de N4. Membre du Team Vaud et du cadre Espoirs de Swiss Tennis.",
+    "Lenart Kadriu est un junior espoir du tennis suisse, né à Vevey. Raquette en main dès 4 ans, il s’y consacre pleinement depuis.",
+    "Membre du cadre Espoirs de Swiss Tennis et du Team Vaud. Classé R1 dès octobre 2026, proche de N4.",
     `Titulaire de la carte Talent régional de Swiss Olympic. Licencié au ${site.club}.`,
     "Sur le court, il impose son rythme, garde son calme dans les moments clés et lit vite le jeu adverse. Son objectif : représenter la Suisse aux plus grands rendez-vous internationaux.",
   ],

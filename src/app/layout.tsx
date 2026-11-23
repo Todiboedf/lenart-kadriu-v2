@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "tennis",
     "tennis junior",
     "Suisse",
-    "U14",
+    "espoir suisse",
     "Team Vaud",
     "Swiss Tennis",
     "Swiss Olympic",

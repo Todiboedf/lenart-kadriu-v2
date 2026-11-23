@@ -16,7 +16,7 @@ export const sponsoring = {
     eyebrow: "Sponsoring",
     title: "Devenez partenaire de Lenart Kadriu",
     paragraph:
-      "Lenart Kadriu, 14 ans, est membre du Team Vaud et du cadre Espoirs de Swiss Tennis, et titulaire de la carte Talent régional de Swiss Olympic. Aux International Children’s Games de Hualien 2026, avec la délégation de la Ville de Vevey, il a remporté l’argent en simple et le bronze en double. La saison 2026-2027 marque son passage en U16.",
+      "Lenart Kadriu est un junior espoir du tennis suisse, membre du cadre Espoirs de Swiss Tennis et du Team Vaud, titulaire de la carte Talent régional de Swiss Olympic. Aux International Children’s Games de Hualien 2026, avec la délégation de la Ville de Vevey, il a remporté l’argent en simple et le bronze en double. La saison 2026-2027 marque son passage en U16.",
     primaryCta: { label: "Recevoir le dossier", subject: "Dossier sponsors Lenart Kadriu" },
     secondaryCta: { label: "Voir les offres", href: "#offres" },
   },
@@ -31,9 +31,9 @@ export const sponsoring = {
           "Titre national en double aux Championnats suisses d’été 2026. Sélectionné par la Ville de Vevey pour les International Children’s Games, 58e édition, du 1er au 6 août 2026 : argent en simple, bronze en double.",
       },
       {
-        title: "Un palmarès Tennis Europe",
+        title: "Un espoir du tennis suisse",
         description:
-          "Vainqueur à Split, finaliste à Tirana, Shkodra et Poreč, 4 victoires en simple au tournoi catégorie 1 de Gradignan (France), 4 titres de champion vaudois.",
+          "Nombreux trophées au niveau cantonal, national, européen et international.",
       },
       {
         title: "Un encadrement officiel",
@@ -126,7 +126,7 @@ export const sponsoring = {
     eyebrow: "Sponsoring",
     title: "Devenir partenaire de Lenart",
     lines: [
-      "Associez votre marque au parcours d’un joueur suisse de 14 ans, médaillé d’argent en simple aux International Children’s Games Hualien 2026.",
+      "Associez votre marque au parcours d’un junior espoir du tennis suisse, médaillé d’argent en simple aux International Children’s Games Hualien 2026.",
       "Trois niveaux de partenariat, des supports concrets, un interlocuteur unique.",
     ],
     primaryCta: { label: "Voir les offres", href: "/sponsoring" },
@@ -136,6 +136,6 @@ export const sponsoring = {
   meta: {
     title: "Sponsoring, Lenart Kadriu",
     description:
-      "Devenez partenaire de Lenart Kadriu, joueur de tennis suisse de 14 ans, médaillé d’argent en simple aux International Children’s Games Hualien 2026. Niveaux Bronze, Silver et Gold.",
+      "Devenez partenaire de Lenart Kadriu, junior espoir du tennis suisse, médaillé d’argent en simple aux International Children’s Games Hualien 2026. Niveaux Bronze, Silver et Gold.",
   },
 };

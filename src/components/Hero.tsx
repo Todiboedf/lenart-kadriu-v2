@@ -6,7 +6,7 @@ import { Container } from "./ui/Container";
 import { Button } from "./ui/Button";
 
 export default function Hero() {
-  const line = `Tennis · Suisse · ${site.categorieSaison} · Team Vaud`;
+  const line = site.hero.eyebrow;
 
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden bg-bg">

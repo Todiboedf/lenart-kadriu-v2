@@ -17,7 +17,7 @@ export default async function OpengraphImage() {
   return new ImageResponse(
     (
       <OgLayout
-        eyebrow={`Tennis · Suisse · ${site.categorieSaison}`}
+        eyebrow={site.hero.eyebrow}
         titleLines={["Lenart", "Kadriu"]}
         subtitle="Argent en simple, International Children’s Games Hualien 2026"
         footer="lenartkadriu.com"

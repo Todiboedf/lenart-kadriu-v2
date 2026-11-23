@@ -6,7 +6,7 @@ export const site = {
   tagline: "Tennis, Suisse",
   title: "Lenart Kadriu, tennis, Suisse",
   description:
-    "Lenart Kadriu, joueur de tennis suisse né en 2012 à Vevey, membre du Team Vaud. Médaille d’argent en simple aux International Children’s Games Hualien 2026. Parcours, palmarès et partenariats.",
+    "Lenart Kadriu, junior espoir du tennis suisse né à Vevey, membre du cadre Espoirs de Swiss Tennis et du Team Vaud. Médaille d’argent en simple aux International Children’s Games Hualien 2026. Parcours, palmarès et partenariats.",
   url: "https://www.lenartkadriu.com",
   email: "ghaasmanagement@gmail.com",
   phone: "+41 79 566 74 10",
@@ -57,6 +57,7 @@ export const site = {
   hero: {
     loopMp4: "/assets/hero-loop.mp4",
     loopWebm: "/assets/hero-loop.webm",
+    eyebrow: "Tennis · Espoir suisse · Team Vaud",
     subtitle:
       "Champion suisse d’été 2026 en double, médaille d’argent en simple aux ICG Hualien 2026",
     primaryCta: { label: "Devenir partenaire", href: "/sponsoring" },

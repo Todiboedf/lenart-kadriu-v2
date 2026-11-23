@@ -38,15 +38,6 @@ export const portrait: Photo = {
   focus: "top",
 };
 
-export const debuts: Photo = {
-  src: "/assets/debuts-4-ans.jpg",
-  alt: "Lenart à 4 ans, raquette et médaille autour du cou, sur un court de Vevey",
-  width: 1500,
-  height: 2000,
-  focus: "top",
-  caption: "Raquette en main à 4 ans, Vevey, 2016",
-};
-
 export const action: Photo = {
   src: "/assets/action-gradignan.jpg",
   alt: "Lenart Kadriu en match sur terre battue au tournoi de Gradignan",
