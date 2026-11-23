@@ -36,7 +36,20 @@ export const partners: Partner[] = [
     logoSize: { width: 424, height: 120 },
     logoHeight: 36,
   },
+  {
+    // Logo officiel repris du site amstein.ch (SVG), passé en blanc.
+    // Lien vers la page entreprise et non vers la boutique en ligne : Lenart est mineur.
+    name: "AMSTEIN SA",
+    role: "Partenaire",
+    url: "https://www.amstein.ch/fr/a-Propos/L-Entreprise.html",
+    logo: "/sponsors/amstein-white.svg",
+    logoSize: { width: 235, height: 32 },
+    logoHeight: 20,
+  },
 ];
+
+/** Mot de remerciement affiché sous les logos partenaires. */
+export const partnersThanks = "Merci à AMSTEIN SA, qui rejoint les partenaires de Lenart.";
 
 export const affiliations = {
   label: "Affiliations",

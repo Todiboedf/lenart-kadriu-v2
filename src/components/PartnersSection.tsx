@@ -1,4 +1,4 @@
-import { partners, affiliations } from "@/content/partners";
+import { partners, affiliations, partnersThanks } from "@/content/partners";
 import { site } from "@/content/site";
 import { Container } from "./ui/Container";
 import { SectionHeader } from "./ui/SectionHeader";
@@ -24,7 +24,8 @@ export default function PartnersSection({
         <div className="mt-12">
           <LogoStrip partners={partners} />
         </div>
-        <p className="t-small mt-6 text-fg-muted">{affiliationLine}</p>
+        <p className="t-body mt-6">{partnersThanks}</p>
+        <p className="t-small mt-4 text-fg-muted">{affiliationLine}</p>
       </Container>
     </section>
   );
