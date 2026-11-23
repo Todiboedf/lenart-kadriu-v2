@@ -32,7 +32,7 @@ export const site = {
       { label: "Profil", id: "profil" },
       { label: "Palmarès", id: "palmares" },
       { label: "Hualien 2026", id: "hualien" },
-      { label: "Galerie", id: "galerie" },
+      // TODO(Guillaume) : remettre { label: "Galerie", id: "galerie" } quand la galerie aura des photos récentes.
       { label: "Partenaires", id: "partenaires" },
     ],
     cta: { label: "Devenir partenaire", href: "/sponsoring" },

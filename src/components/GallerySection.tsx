@@ -4,6 +4,8 @@ import { SectionHeader } from "./ui/SectionHeader";
 import { PhotoGrid } from "./PhotoGrid";
 
 export default function GallerySection() {
+  if (galerie.length === 0) return null;
+
   return (
     <section id="galerie" className="section">
       <Container>

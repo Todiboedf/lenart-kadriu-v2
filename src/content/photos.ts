@@ -29,70 +29,41 @@ export const filmPoster: Photo = {
   focus: "center",
 };
 
-/** Portrait provisoire (fond HEAD), recadré 3:4 sur le visage. */
+/** Portrait du profil : photo récente fournie par la famille (novembre 2026), format 3:4. */
 export const portrait: Photo = {
-  src: "/assets/portrait-head.jpg",
-  alt: "Lenart Kadriu, portrait en tenue de match devant une bâche HEAD",
-  width: 1200,
-  height: 1600,
+  src: "/assets/portrait-terre-battue.jpg",
+  alt: "Lenart Kadriu en tenue blanche, trophée en main, au bord d’un court en terre battue",
+  width: 1500,
+  height: 2000,
   focus: "top",
 };
 
-export const action: Photo = {
-  src: "/assets/action-gradignan.jpg",
-  alt: "Lenart Kadriu en match sur terre battue au tournoi de Gradignan",
-  width: 1330,
-  height: 1222,
-  focus: "center",
+/** Ses débuts à 4 ans, photo gardée à la demande de la famille. */
+export const debuts: Photo = {
+  src: "/assets/debuts-4-ans.jpg",
+  alt: "Lenart à 4 ans, raquette et médaille autour du cou, sur un court de Vevey",
+  width: 1500,
+  height: 2000,
+  focus: "top",
+  caption: "Raquette en main à 4 ans, Vevey, 2016",
 };
 
-/** Galerie de la home : six photos, aucune cellule vide à 390, 768 et 1440. */
-export const galerie: Photo[] = [
-  {
-    src: "/assets/victoire-indoor.jpg",
-    alt: "Lenart Kadriu index levé, coupe en main, après une victoire en salle",
-    width: 1368,
-    height: 1824,
-    focus: "top",
-    tall: true,
-  },
-  {
-    src: "/assets/remise-prix-vaud.jpg",
-    alt: "Lenart Kadriu avec sa coupe devant le mur des partenaires lors d’une remise de prix vaudoise",
-    width: 1912,
-    height: 2000,
-    focus: "center",
-  },
-  {
-    src: "/assets/tennis-europe-croatie.jpg",
-    alt: "Lenart Kadriu et sa coupe devant les drapeaux de la Croatie et de l’Union européenne, tournoi Tennis Europe",
-    width: 1109,
-    height: 1600,
-    focus: "center",
-  },
-  {
-    src: "/assets/trophee-realsport.jpg",
-    alt: "Lenart Kadriu avec son trophée sur un court RealSport",
-    width: 1368,
-    height: 1824,
-    focus: "top",
-    tall: true,
-  },
-  {
-    src: "/assets/istarska-riviera.jpg",
-    alt: "Lenart Kadriu, coupe en main, devant la bâche du tournoi Istarska Riviera",
-    width: 1172,
-    height: 1585,
-    focus: "top",
-  },
-  {
-    src: "/assets/stills/film-coup-droit-arche.jpg",
-    alt: "Lenart Kadriu frappe un coup droit sous la charpente d’un court couvert",
-    width: 1280,
-    height: 576,
-    focus: "center",
-  },
-];
+/** Photo de la section Style de jeu : photo récente fournie par la famille (novembre 2026). */
+export const action: Photo = {
+  src: "/assets/remise-prix-zurich.jpg",
+  alt: "Lenart Kadriu, trophée et diplôme en main, devant le panneau du Regionalverband Zürich Tennis",
+  width: 1641,
+  height: 2000,
+  focus: "top",
+};
+
+/**
+ * Galerie de la home. Les anciennes photos (Lenart vers 12 ans) sont retirées à la demande
+ * de la famille (novembre 2026).
+ * TODO(Guillaume) : photos récentes à fournir. La section reste masquée tant que la liste
+ * est vide. Prévoir 4 photos, ou 6 dont 2 "tall", pour une grille sans cellule vide.
+ */
+export const galerie: Photo[] = [];
 
 /** Images fixes du film 2026 (photos d’action de secours). */
 export const stills: Photo[] = [

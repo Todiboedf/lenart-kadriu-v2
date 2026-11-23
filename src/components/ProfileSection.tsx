@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { athlete } from "@/content/athlete";
-import { portrait, focusToPosition } from "@/content/photos";
+import { portrait, debuts, focusToPosition } from "@/content/photos";
 import { Container } from "./ui/Container";
 import { SectionHeader } from "./ui/SectionHeader";
 import { FactsBar } from "./ui/FactsBar";
@@ -20,6 +20,21 @@ export default function ProfileSection() {
                 className="object-cover"
                 style={{ objectPosition: focusToPosition(portrait.focus) }}
               />
+            </figure>
+            <figure className="grid grid-cols-[88px_1fr] items-center gap-4">
+              <div className="relative aspect-[3/4] overflow-hidden bg-bg-elev">
+                <Image
+                  src={debuts.src}
+                  alt={debuts.alt}
+                  fill
+                  sizes="88px"
+                  className="object-cover"
+                  style={{ objectPosition: focusToPosition(debuts.focus) }}
+                />
+              </div>
+              <figcaption className="t-small text-fg-muted">
+                {debuts.caption}
+              </figcaption>
             </figure>
           </div>
 

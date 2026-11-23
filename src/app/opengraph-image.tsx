@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/content/site";
-import { galerie } from "@/content/photos";
+import { portrait } from "@/content/photos";
 import { loadOgFonts, loadPublicImage, OgLayout, OG_SIZE } from "@/lib/og";
 
 export const runtime = "nodejs";
@@ -11,7 +11,7 @@ export const contentType = "image/png";
 export default async function OpengraphImage() {
   const [fonts, image] = await Promise.all([
     loadOgFonts(),
-    loadPublicImage(galerie[0].src),
+    loadPublicImage(portrait.src),
   ]);
 
   return new ImageResponse(
